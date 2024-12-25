@@ -12,9 +12,10 @@ export default function Faq() {
   const [isOpen, setIsOpen] = useState<string | null>(null);
 
   return (
-    <section className="faq bg-[url('/src/assets/img/dotted.png')] pt-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center">
-    <div className="flex flex-col lg:flex-row gap-6 py-20 px-8 md:px-32">
-      <div>
+    <section className="faq bg-[url('/src/assets/img/dotted.png')] pt-10 w-full min-[1700px]:w-[1700px] mx-auto">
+    <div className="py-20 px-8 md:px-32">
+      <div className="flex flex-col lg:flex-row gap-6 ">
+      <div className="w-1/3">
         <h1 className="text-black font-bold text-4xl">FAQ</h1>
         <p className="mt-4 text-sm  2xl:text-base text-[#202020]">
           Temukan Jawaban atas Pertanyaan Anda di Sini
@@ -29,6 +30,7 @@ export default function Faq() {
         </Link>
       </div>
       <Accordion
+      className="w-full"
         type="single"
         collapsible
         onValueChange={(value) => setIsOpen(value)}
@@ -81,6 +83,7 @@ export default function Faq() {
           </AccordionItem>
         ))}
       </Accordion>
+      </div>
     </div>
   </section>
   );
