@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/img/logoWhite.png";
+import logo from "../assets/img/logoWhite.svg";
 import bgFooter from "../assets/img/footer.png";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
@@ -7,10 +7,10 @@ export default function Footer() {
   return (
     <section
       id="footer"
-      className="mt-20 lg:mt-40 bg-[#011F4D] w-full relative"
+      className="pt-12 md:pt-16 md:pb-6 bg-[#011F4D] w-full relative"
     >
       <img className="absolute top-10 right-0" src={bgFooter} alt="" />
-      <div className="max-w-[1700px] mx-auto px-6 md:px-9 lg:px-32 py-6 pt-12 md:pt-16 md:pb-6 text-white">
+      <div className="max-w-[1700px] mx-auto px-6 md:px-9 lg:px-32 py-6 text-white">
         <div className="flex flex-col md:flex-row gap-y-9 md:gap-x-12 md:gap-y-0">
           <div className="w-full md:w-1/4 flex flex-col">
             <Link to={"/"}>

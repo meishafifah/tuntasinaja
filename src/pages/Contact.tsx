@@ -7,6 +7,7 @@ import contactHero1 from "../assets/img/contactHero1.png";
 import contactHero2 from "../assets/img/contactHero2.png";
 import contactHero3 from "../assets/img/contactHero3.png";
 import contactEllipse from "../assets/img/contactEllipse.png";
+import arrow from "../assets/img/arrow.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -120,8 +121,13 @@ export default function Contact() {
         id="formContact"
         className="relative w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center"
       >
-        <div className="relative z-10 px-8 md:px-32 lg:p-0 w-full lg:w-1/2 min-[1700px]:w-1/4">
-          <div className="text-center mt-20 mb-8">
+        <div className="relative z-10 px-8 md:px-32 py-16 lg:py-20 lg:p-0 w-full lg:w-1/2 min-[1700px]:w-1/4">
+          <img
+            className="pointer-events-none absolute -top-16 right-2 md:-top-16 md:right-20 lg:top-0 lg:right-0 z-0"
+            src={arrow}
+            alt=""
+          />
+          <div className="text-center ">
             <h1 className="text-black font-bold text-4xl">Atau Hubungi Kami</h1>
             <p className="mt-4 text-base text-[#202020]">
               Hubungi kami lewat formulir kami
