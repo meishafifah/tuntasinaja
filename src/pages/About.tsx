@@ -77,6 +77,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section
         id="aboutTraction"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
@@ -121,6 +122,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section
         id="aboutVisiMisi"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
@@ -146,7 +148,7 @@ export default function About() {
               <h1 className="mb-8 text-center lg:text-start font-bold text-xl lg:text-2xl">
                 Visi Kami
               </h1>
-              <p className="mt-4 text-sm lg:text-base relative z-1">
+              <p className="text-sm lg:text-base relative z-1">
                 Menjadi penyedia layanan teknologi terkemuka yang menawarkan
                 solusi khusus sesuai kebutuhan klien, membantu perusahaan
                 beradaptasi dan berkembang di era digital”
@@ -191,11 +193,12 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section
         id="aboutOurStory"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className="px-8 md:px-32 pt-16 lg:py-20 min-[1700px]:w-[1700px]">
+        <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
             <img
               className="w-[350px] lg:w-[500px] relative z-10"
@@ -208,7 +211,7 @@ export default function About() {
               alt=""
             />
             <div className="text-[#212121] relative z-10">
-              <h1 className="mb-8 text-center lg:text-start font-bold text-xl lg:text-2xl">
+              <h1 className="text-center lg:text-start font-bold text-xl lg:text-2xl">
                 Our Back story
               </h1>
               <p className="mt-4 text-sm lg:text-base relative z-1">
@@ -229,6 +232,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section
         id="aboutTechnology"
         className="bg-[#E6F0FF] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
@@ -283,6 +287,7 @@ export default function About() {
           />
         </div>
       </section>
+      
       <section
         id="aboutOurServices"
         className="bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
