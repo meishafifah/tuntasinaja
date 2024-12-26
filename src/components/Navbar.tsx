@@ -8,11 +8,12 @@ import { Button } from "@/components/ui/button";
 import { X, Menu } from "lucide-react";
 import logo from "../assets/img/logo_text.svg";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
   const [navbarBg, setNavbarBg] = useState("bg-transparent");
+  const location = useLocation();
 
   useEffect(() => {
     const updateNavbarColor = () => {
@@ -20,11 +21,10 @@ export default function Navbar() {
         const sections = document.querySelectorAll("section");
         let activeColor = "bg-transparent";
 
-        // Cari section pertama dengan data-navbar-color
         sections.forEach((section) => {
           if (section.dataset.navbarColor) {
             activeColor = section.dataset.navbarColor;
-            return; // Keluar dari loop setelah menemukan section pertama
+            return;
           }
         });
 
@@ -34,17 +34,17 @@ export default function Navbar() {
       }
     };
 
-    // Panggil updateNavbarColor saat halaman dimuat
     updateNavbarColor();
 
-    // Tambahkan event listener untuk scroll dan resize
     window.addEventListener("resize", updateNavbarColor);
 
     return () => {
-      // Hapus event listener saat komponen di-unmount
       window.removeEventListener("resize", updateNavbarColor);
     };
   }, []);
+
+  const getActiveClass = (path: string) =>
+    location.pathname === path ? "bg-[#0366FF] rounded-[10px] text-white" : "";
 
   return (
     <section
@@ -59,12 +59,20 @@ export default function Navbar() {
           <div className="w-auto lg:w-full flex justify-between lg:justify-center items-center z-50">
             <NavigationMenu className="hidden lg:block">
               <NavigationMenuList className="flex justify-between gap-16">
-                <NavigationMenuItem className="p-[14px] hover:bg-[#0366FF] hover:rounded-[10px] hover:text-white">
+                <NavigationMenuItem
+                  className={`p-[14px] hover:bg-[#0366FF] hover:rounded-[10px] hover:text-white ${getActiveClass(
+                    "/"
+                  )}`}
+                >
                   <NavigationMenuLink className="text-sm xl:text-base" href="/">
                     Home
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem className="p-[14px] hover:bg-[#0366FF] hover:rounded-[10px] hover:text-white">
+                <NavigationMenuItem
+                  className={`p-[14px] hover:bg-[#0366FF] hover:rounded-[10px] hover:text-white ${getActiveClass(
+                    "/about"
+                  )}`}
+                >
                   <NavigationMenuLink
                     className="text-sm xl:text-base"
                     href="/about"
@@ -72,7 +80,11 @@ export default function Navbar() {
                     Tentang
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem className="p-[14px] hover:bg-[#0366FF] hover:rounded-[10px] hover:text-white">
+                <NavigationMenuItem
+                  className={`p-[14px] hover:bg-[#0366FF] hover:rounded-[10px] hover:text-white ${getActiveClass(
+                    "/contact"
+                  )}`}
+                >
                   <NavigationMenuLink
                     className="text-sm xl:text-base"
                     href="/contact"
