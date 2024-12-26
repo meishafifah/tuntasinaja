@@ -35,8 +35,7 @@ export default function About() {
   return (
     <div className="min-h-screen w-full relative">
       <Navbar />
-      <section
-        id="about"
+      <section id="about"
         data-navbar-color="bg-[#0366FF]"
         className="rounded-bl-[100px] md:rounded-bl-[150px] lg:rounded-bl-[200px] bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
@@ -78,8 +77,7 @@ export default function About() {
         </div>
       </section>
 
-      <section
-        id="aboutTraction"
+      <section id="aboutTraction"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
@@ -123,8 +121,7 @@ export default function About() {
         </div>
       </section>
 
-      <section
-        id="aboutVisiMisi"
+      <section id="aboutVisiMisi"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
@@ -194,8 +191,7 @@ export default function About() {
         </div>
       </section>
 
-      <section
-        id="aboutOurStory"
+      <section id="aboutOurStory"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
@@ -233,8 +229,7 @@ export default function About() {
         </div>
       </section>
 
-      <section
-        id="aboutTechnology"
+      <section id="aboutTechnology"
         className="bg-[#E6F0FF] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 py-20 xl:py-28 min-[1700px]:w-[1700px] relative">
@@ -287,9 +282,8 @@ export default function About() {
           />
         </div>
       </section>
-      
-      <section
-        id="aboutOurServices"
+
+      <section id="aboutOurServices"
         className="bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
@@ -337,7 +331,9 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <Faq />
+
       <Footer />
     </div>
   );

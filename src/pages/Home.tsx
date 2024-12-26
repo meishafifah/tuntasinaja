@@ -1,3 +1,5 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { Player } from "@lottiefiles/react-lottie-player";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -28,8 +30,34 @@ import botCall from "../assets/img/botCall.svg";
 import dataAnalytic from "../assets/img/dataAnalytic.svg";
 import iot from "../assets/img/iot.svg";
 import Faq from "@/components/Faq";
+import icon1 from "../assets/img/heroIcon/icon1.svg";
+import icon2 from "../assets/img/heroIcon/icon2.svg";
+import icon3 from "../assets/img/heroIcon/icon3.svg";
+import icon4 from "../assets/img/heroIcon/icon4.svg";
+import icon5 from "../assets/img/heroIcon/icon5.svg";
+import icon6 from "../assets/img/heroIcon/icon6.svg";
+import icon7 from "../assets/img/heroIcon/icon7.svg";
+import icon8 from "../assets/img/heroIcon/icon8.svg";
+import icon9 from "../assets/img/heroIcon/icon9.svg";
+import icon10 from "../assets/img/heroIcon/icon10.svg";
+import icon11 from "../assets/img/heroIcon/icon11.svg";
+import icon12 from "../assets/img/heroIcon/icon12.svg";
+import { useState } from "react";
 
 export default function Home() {
+  type ImageKey = "original" | "medium" | "high" | "customizable";
+  const [selectedImage, setSelectedImage] = useState<ImageKey>("original");
+
+  const images: Record<ImageKey, string> = {
+    original:
+      "https://media.suara.com/pictures/653x366/2024/02/27/18939-dpr-ian-instagramcomdprian.jpg",
+    medium:
+      "https://images.bloombergtechnoz.com/data/2024/02/image-20240226130252.jpg",
+    high: "https://asset-2.tstatic.net/tribunnews/foto/bank/images/dpr-ian-i.jpg",
+    customizable:
+      "https://assets.promediateknologi.id/crop/112x0:864x454/750x500/webp/photo/2023/08/04/IMG_4978-686860802.jpg",
+  };
+
   return (
     <div className="min-h-screen w-full bg-[url('/src/assets/img/backgroundHero.png')] bg-no-repeat bg-right-top">
       <Navbar />
@@ -37,19 +65,52 @@ export default function Home() {
         id="compression"
         className="bg-[url('/src/assets/img/dotted.png')] py-10 relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className="px-8 lg:px-20 xl:px-32 pt-0 md:pt-16 lg:pt-40 min-[1700px]:w-[1700px] grid grid-cols-1 lg:grid-cols-2 gap-5 items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-black font-bold text-4xl">
+        <div className=" relative z-10 px-8 lg:px-20 xl:px-32 pt-0 md:pt-16 lg:pt-40 min-[1700px]:w-[1700px] grid grid-cols-1 lg:grid-cols-2 gap-5 items-center justify-center">
+          <div className="relative z-10 text-center mx-auto md:content-center md:w-[550px] md:h-[550px] md:border-2 md:border-dashed md:border-[#9F9F9F] md:rounded-full">
+            <div className="hidden absolute inset-0 md:flex items-center justify-center">
+              <div className="relative w-full h-full animate-spin-slow">
+                {[
+                  icon1,
+                  icon2,
+                  icon3,
+                  icon4,
+                  icon5,
+                  icon6,
+                  icon7,
+                  icon8,
+                  icon9,
+                  icon10,
+                  icon11,
+                  icon12,
+                ].map((icon, index) => (
+                  <img
+                    key={index}
+                    src={icon}
+                    alt={`icon-${index}`}
+                    className="absolute w-[46px] h-[46px] z-0"
+                    style={{
+                      transform: `rotate(${
+                        index * 30
+                      }deg) translateX(275px) rotate(-${index * 30}deg)`,
+                      top: "46%",
+                      left: "46%",
+                      transformOrigin: "center",
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            <h1 className="text-black font-bold text-4xl relative z-10">
               <span className="text-[#0366FF]">Hemat Ruang</span>, Aman Data,
               dan Pantau dengan{" "}
               <span className="text-[#0366FF]">AI Pintar</span>
             </h1>
-            <p className="mt-4 text-base text-[#202020]">
+            <p className="mt-4 text-base text-[#202020] relative z-10">
               Hemat ruang penyimpanan hingga 70% tanpa mengorbankan kualitas,
               lindungi data Anda dengan jaringan private yang aman,
             </p>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center  relative z-10">
             <div className="bg-[#F5F5F5] rounded-3xl p-4 w-fit">
               <div className="bg-white rounded-2xl p-6 w-fit">
                 <h3 className="mb-4 text-xl text-[#202020] font-semibold">
@@ -107,7 +168,19 @@ export default function Home() {
               Tuntasinaja, semuanya beres!
             </p>
           </div>
-          {/* video */}
+          <div>
+            <Player
+              src="https://lottie.host/466f6bde-1da8-40ee-bae3-a619f7776440/phbTMHU19j.json"
+              className="player h-[420px]"
+              loop
+              autoplay
+            />
+            <DotLottieReact
+              src="https://lottie.host/466f6bde-1da8-40ee-bae3-a619f7776440/phbTMHU19j.json"
+              loop
+              autoplay
+            />
+          </div>
         </div>
       </section>
 
@@ -264,7 +337,68 @@ export default function Home() {
               ukuran video tanpa mengorbankan kualitas.
             </p>
           </div>
-          <div className="mt-8">{/* sample kompresi */}</div>
+          <div className="mt-8">
+            <div className="relative">
+              {/* Gambar utama */}
+              <img
+                src={images[selectedImage]}
+                alt="Hasil Kompresi"
+                className="w-full h-[500px] md:h-[350px] xl:h-[450px] object-cover object-center rounded-3xl shadow-lg"
+              />
+
+              {/* Tombol */}
+              <div className="absolute inset-0 flex items-end justify-center p-4">
+                <div className="bg-[#F5F5F5]/50 backdrop-blur-sm p-4 rounded-[20px] grid grid-cols-2 gap-1 md:flex md:space-x-4 md:gap-0">
+                  <button
+                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                      selectedImage === "original"
+                        ? "bg-[#0366FF] text-white border-none"
+                        : "bg-transparent text-white"
+                    }`}
+                    onClick={() => setSelectedImage("original")}
+                  >
+                    <p className="md:text-sm font-semibold mb-2">Original</p>
+                    <p>1GB</p>
+                  </button>
+                  <button
+                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                      selectedImage === "medium"
+                        ? "bg-[#0366FF] text-white border-none"
+                        : "bg-transparent text-white"
+                    }`}
+                    onClick={() => setSelectedImage("medium")}
+                  >
+                    <p className="md:text-sm font-semibold mb-2">Medium</p>
+                    <p>500MB (-50%)</p>
+                  </button>
+                  <button
+                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                      selectedImage === "high"
+                        ? "bg-[#0366FF] text-white border-none"
+                        : "bg-transparent text-white"
+                    }`}
+                    onClick={() => setSelectedImage("high")}
+                  >
+                    <p className="md:text-sm font-semibold mb-2">High</p>
+                    <p>100MB (-70%)</p>
+                  </button>
+                  <button
+                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                      selectedImage === "customizable"
+                        ? "bg-[#0366FF] text-white border-none"
+                        : "bg-transparent text-white"
+                    }`}
+                    onClick={() => setSelectedImage("customizable")}
+                  >
+                    <p className="md:text-sm font-semibold mb-2">
+                      Can be customized
+                    </p>
+                    <p>9MB (-95%)</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -296,7 +430,6 @@ export default function Home() {
               <img className="h-[100px] lg:h-[120px]" src={logo} />
             </div>
           </div>
-          <div className="mt-8">{/* sample kompresi */}</div>
         </div>
       </section>
 
@@ -473,6 +606,7 @@ export default function Home() {
       </section>
 
       <Faq />
+
       <Footer />
     </div>
   );

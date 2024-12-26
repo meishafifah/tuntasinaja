@@ -62,9 +62,10 @@ export default function Contact() {
     <div className="min-h-screen w-full relative">
       <img className="absolute top-0 left-0 z-0" src={contactHero1} alt="" />
       <img className="absolute top-0 right-0 z-0" src={contactHero2} alt="" />
+
       <Navbar />
-      <section
-        id="contact"
+
+      <section id="contact"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center"
       >
         <div className="px-8 md:px-32 lg:pt-48">
@@ -117,8 +118,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section
-        id="formContact"
+      <section id="formContact"
         className="relative w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center"
       >
         <div className="relative z-10 px-8 md:px-32 py-16 lg:py-20 lg:p-0 w-full lg:w-1/2 min-[1700px]:w-1/4">
@@ -260,7 +260,9 @@ export default function Contact() {
           alt=""
         />
       </section>
+
       <Faq />
+      
       <Footer />
     </div>
   );
