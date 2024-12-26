@@ -420,7 +420,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-11 text-[#212121] grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-6 ">
-            <div className="flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
               <img className="w-12" src={faceReco} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">
@@ -432,7 +432,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
               <img className="w-12" src={botCall} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">Bot Call</p>
@@ -443,7 +443,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
               <img className="w-12" src={dataAnalytic} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">
@@ -455,7 +455,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
               <img className="w-12" src={iot} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">

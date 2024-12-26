@@ -15,15 +15,16 @@ export default function Navbar() {
   const [navbarBg, setNavbarBg] = useState("bg-transparent");
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateNavbarColor = () => {
       if (window.innerWidth < 1024) {
         const sections = document.querySelectorAll("section");
         let activeColor = "bg-transparent";
 
+        // Cari section pertama dengan data-navbar-color
         sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            activeColor = section.dataset.navbarColor || "bg-transparent";
+          if (section.dataset.navbarColor) {
+            activeColor = section.dataset.navbarColor;
+            return; // Keluar dari loop setelah menemukan section pertama
           }
         });
 
@@ -33,9 +34,15 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Panggil updateNavbarColor saat halaman dimuat
+    updateNavbarColor();
+
+    // Tambahkan event listener untuk scroll dan resize
+    window.addEventListener("resize", updateNavbarColor);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      // Hapus event listener saat komponen di-unmount
+      window.removeEventListener("resize", updateNavbarColor);
     };
   }, []);
 

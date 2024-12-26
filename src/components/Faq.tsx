@@ -15,7 +15,7 @@ export default function Faq() {
     <section className="faq bg-[url('/src/assets/img/dotted.png')] pt-10 w-full min-[1700px]:w-[1700px] mx-auto">
     <div className="py-20 px-8 md:px-32">
       <div className="flex flex-col lg:flex-row gap-6 ">
-      <div className="w-1/3">
+      <div className="w-full lg:w-1/3">
         <h1 className="text-black font-bold text-4xl">FAQ</h1>
         <p className="mt-4 text-sm  2xl:text-base text-[#202020]">
           Temukan Jawaban atas Pertanyaan Anda di Sini
