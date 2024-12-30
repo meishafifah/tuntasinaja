@@ -17,7 +17,7 @@ import logo from "../assets/img/homeLogo.png";
 import homeGambar from "../assets/img/homeGambar.png";
 import homeCctv from "../assets/img/homeCctv.png";
 import homeFile from "../assets/img/homeFile.png";
-import homeSuperior from "../assets/img/homeSuperior.png";
+// import homeSuperior from "../assets/img/homeSuperior.png";
 import homeIntro1 from "../assets/img/homeIntro1.png";
 import homeIntro2 from "../assets/img/homeIntro2.png";
 import feature from "../assets/img/feature.svg";
