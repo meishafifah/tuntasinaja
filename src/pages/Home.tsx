@@ -1,16 +1,8 @@
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Upload } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import Autoplay from "@/components/Autoplay";
 import hematBeban from "../assets/img/hematBeban.svg";
 import hematWaktu from "../assets/img/hematWaktu.svg";
@@ -19,16 +11,21 @@ import kualitasVideo from "../assets/img/kualitasVideo.svg";
 import homeSteps from "../assets/img/homeSteps.png";
 import homeSteps1 from "../assets/img/homeSteps1.png";
 import homeSteps2 from "../assets/img/homeSteps2.png";
+import stepIcon from "../assets/img/stepIcon.svg";
 import contactEllipse from "../assets/img/contactEllipse.png";
 import logo from "../assets/img/homeLogo.png";
 import homeGambar from "../assets/img/homeGambar.png";
 import homeCctv from "../assets/img/homeCctv.png";
 import homeFile from "../assets/img/homeFile.png";
+import homeSuperior from "../assets/img/homeSuperior.png";
+import homeIntro1 from "../assets/img/homeIntro1.png";
+import homeIntro2 from "../assets/img/homeIntro2.png";
 import feature from "../assets/img/feature.svg";
 import faceReco from "../assets/img/faceReco.svg";
 import botCall from "../assets/img/botCall.svg";
 import dataAnalytic from "../assets/img/dataAnalytic.svg";
 import iot from "../assets/img/iot.svg";
+import videoFile from "../assets/img/videoFile.svg";
 import Faq from "@/components/Faq";
 import icon1 from "../assets/img/heroIcon/icon1.svg";
 import icon2 from "../assets/img/heroIcon/icon2.svg";
@@ -42,9 +39,28 @@ import icon9 from "../assets/img/heroIcon/icon9.svg";
 import icon10 from "../assets/img/heroIcon/icon10.svg";
 import icon11 from "../assets/img/heroIcon/icon11.svg";
 import icon12 from "../assets/img/heroIcon/icon12.svg";
-import { useState } from "react";
+import arrow from "../assets/img/arrow.svg";
+import { useEffect, useState } from "react";
+import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
+import Chatbot from "@/components/Chatbot";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useDropzone } from "react-dropzone";
+interface UploadedFile {
+  name: string;
+  preview: string;
+}
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: "phone",
+      duration: 2000,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
   type ImageKey = "original" | "medium" | "high" | "customizable";
   const [selectedImage, setSelectedImage] = useState<ImageKey>("original");
 
@@ -58,14 +74,43 @@ export default function Home() {
       "https://assets.promediateknologi.id/crop/112x0:864x454/750x500/webp/photo/2023/08/04/IMG_4978-686860802.jpg",
   };
 
+  const [file, setFile] = useState<UploadedFile | null>(null);
+  const [compressionLevel, setCompressionLevel] = useState("medium");
+
+  const onDrop = (acceptedFiles: File[]) => {
+    if (acceptedFiles.length > 0) {
+      const uploadedFile = acceptedFiles[0];
+      setFile({
+        name: uploadedFile.name,
+        preview: URL.createObjectURL(uploadedFile),
+      });
+    }
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/*": [".jpeg", ".png", ".jpg", ".gif", ".tiff"],
+    },
+    multiple: false,
+  });
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("File:", file);
+    console.log("Compression Level:", compressionLevel);
+    // Add your form submission logic here
+  };
+
   return (
-    <div className="min-h-screen w-full bg-[url('/src/assets/img/backgroundHero.png')] bg-no-repeat bg-right-top">
+    <div className="relative min-h-screen w-full bg-[url('/src/assets/img/backgroundHero.png')] bg-no-repeat bg-right-top">
       <Navbar />
+      <Chatbot />
       <section
         id="compression"
         className="bg-[url('/src/assets/img/dotted.png')] py-10 relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className=" relative z-10 px-8 lg:px-20 xl:px-32 pt-0 md:pt-16 lg:pt-40 min-[1700px]:w-[1700px] grid grid-cols-1 lg:grid-cols-2 gap-5 items-center justify-center">
+        <div className=" relative z-10 px-8 lg:px-20 xl:px-32 pt-0 md:pt-16 lg:pt-40 min-[1700px]:w-[1700px] grid grid-cols-1 xl:grid-cols-2 gap-10 xl:gap-5 items-center justify-center">
           <div className="relative z-10 text-center mx-auto md:content-center md:w-[550px] md:h-[550px] md:border-2 md:border-dashed md:border-[#9F9F9F] md:rounded-full">
             <div className="hidden absolute inset-0 md:flex items-center justify-center">
               <div className="relative w-full h-full animate-spin-slow">
@@ -83,20 +128,24 @@ export default function Home() {
                   icon11,
                   icon12,
                 ].map((icon, index) => (
-                  <img
+                  <div
                     key={index}
-                    src={icon}
-                    alt={`icon-${index}`}
-                    className="absolute w-[46px] h-[46px] z-0"
                     style={{
-                      transform: `rotate(${
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: `translate(-50%, -50%) rotate(${
                         index * 30
-                      }deg) translateX(275px) rotate(-${index * 30}deg)`,
-                      top: "46%",
-                      left: "46%",
-                      transformOrigin: "center",
+                      }deg) translateX(275px)`,
+                      transformOrigin: "50% 50%",
                     }}
-                  />
+                  >
+                    <img
+                      src={icon}
+                      alt={`icon-${index}`}
+                      className="w-[46px] h-[46px] z-0"
+                    />
+                  </div>
                 ))}
               </div>
             </div>
@@ -110,39 +159,153 @@ export default function Home() {
               lindungi data Anda dengan jaringan private yang aman,
             </p>
           </div>
-          <div className="flex justify-center items-center  relative z-10">
+          <img
+            className="hidden md:block -scale-x-[1] rotate-[325deg] pointer-events-none absolute top-2/3 left-0 xl:top-1/3 xl:left-[45%] min-[1700px]:left-[55%] z-20"
+            src={arrow}
+            alt=""
+          />
+          <form
+            onSubmit={handleSubmit}
+            className="flex justify-center items-center relative z-10"
+          >
             <div className="bg-[#F5F5F5] rounded-3xl p-4 w-fit">
               <div className="bg-white rounded-2xl p-6 w-fit">
                 <h3 className="mb-4 text-xl text-[#202020] font-semibold">
                   Compress File
                 </h3>
-                <div className="pt-2 pb-2 px-2 md:pt-14 lg:pb-4 md:px-12 flex flex-col justify-center items-center border-2 border-dashed border-[#9F9F9F] rounded-2xl min-h-[230px] max-w-[450px]">
-                  <Button className="w-fit text-sm bg-[#000A1A]">
-                    <Upload /> Choose File
-                  </Button>
-                  <p className="mt-4 text-sm text-[#C9C9C9] text-center">
-                    Click or drag and drop to upload files <br />
-                    <br /> We support most file types including MP3, MP4, JPEG,
-                    PNG, WAV, AVI, MKV, GIF, MOV, PDF, FLAC, WEBM, TIFF and
-                    more!
-                  </p>
+                <div
+                  {...getRootProps()}
+                  className={`pt-2 pb-2 px-2 md:pt-14 lg:pb-4 md:px-12 flex flex-col justify-center items-center border-2 rounded-2xl min-h-[230px] max-w-[450px] md:w-[450px] ${
+                    isDragActive
+                      ? "border-[#0366FF]"
+                      : "border-dashed border-[#9F9F9F]"
+                  }`}
+                >
+                  <input {...getInputProps()} />
+                  {!file ? (
+                    <>
+                      <button className="w-fit text-sm bg-[#000A1A] flex items-center gap-2 px-4 py-2 text-white rounded-[10px]">
+                        <Upload /> Choose File
+                      </button>
+                      <p className="mt-4 text-sm text-[#C9C9C9] text-center">
+                        Click or drag and drop to upload a file <br />
+                        <br /> We support image file types like JPEG, PNG, GIF,
+                        and TIFF!
+                      </p>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center">
+                      <img
+                        src={file.preview}
+                        alt={file.name}
+                        className="w-40 h-40 rounded-xl object-cover"
+                      />
+                      <p className="mt-4 text-sm text-[#202020]">{file.name}</p>
+                    </div>
+                  )}
                 </div>
-                <div className="mt-6 mb-5 flex justify-between items-center">
-                  <p className="text-[#202020]">Compress to</p>
-                  <div className="w-fit">
-                    <Select>
-                      <SelectTrigger className="focus:ring-[#9F9F9F]">
-                        <SelectValue placeholder="12 MB" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="12">12 MB</SelectItem>
-                        <SelectItem value="16">16 MB</SelectItem>
-                        <SelectItem value="17">17 MB</SelectItem>
-                      </SelectContent>
-                    </Select>
+                <div className="mt-6 flex flex-col md:flex-row items-center justify-between">
+                  <p className="text-[#202020] mb-2">Compress to</p>
+                  <RadioGroup
+                    value={compressionLevel}
+                    onValueChange={(value) => setCompressionLevel(value)}
+                    className="flex flex-row gap-x-1"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem
+                        id="medium"
+                        value="medium"
+                        className="peer hidden"
+                      />
+                      <label
+                        htmlFor="medium"
+                        className="border border-[#C9C9C9] peer-aria-checked:border-[#0366FF] peer-aria-checked:bg-[#0366FF] peer-aria-checked:text-white hover:border-[#0366FF] hover:bg-[#E6F0FF] hover:text-[#0366FF] rounded-xl px-[10px] py-[6px] text-xs cursor-pointer"
+                      >
+                        Medium
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem
+                        id="high"
+                        value="high"
+                        className="peer hidden"
+                      />
+                      <label
+                        htmlFor="high"
+                        className="border border-[#C9C9C9] peer-aria-checked:border-[#0366FF] peer-aria-checked:bg-[#0366FF] peer-aria-checked:text-white hover:border-[#0366FF] hover:bg-[#E6F0FF] hover:text-[#0366FF] rounded-xl px-[10px] py-[6px] text-xs cursor-pointer"
+                      >
+                        High
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem
+                        id="customize"
+                        value="customize"
+                        className="peer hidden"
+                      />
+                      <label
+                        htmlFor="customize"
+                        className="border border-[#C9C9C9] peer-aria-checked:border-[#0366FF] peer-aria-checked:bg-[#0366FF] peer-aria-checked:text-white hover:border-[#0366FF] hover:bg-[#E6F0FF] hover:text-[#0366FF] rounded-xl px-[10px] py-[6px] text-xs cursor-pointer"
+                      >
+                        Customize
+                      </label>
+                    </div>
+                  </RadioGroup>
+                </div>
+                <button
+                  type="submit"
+                  className="bg-[#0366FF] rounded-[10px] w-full py-2 text-white mt-6"
+                >
+                  Compress
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section
+        id="compressed"
+        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
+      >
+        <div className="px-8 md:px-32 pt-16 lg:pt-20 w-fit lg:w-full min-[1700px]:w-[1700px]">
+          <div className="bg-[#F5F5F5] rounded-3xl p-5">
+            <div className="bg-white rounded-2xl p-5">
+              <h1 className="mb-6 font-bold text-xl lg:text-2xl">
+                Hasil Kompresi
+              </h1>
+              <div className="flex flex-col lg:flex-row lg:items-center gap-6 relative">
+                <img
+                  className="hidden md:block pointer-events-none absolute top-56 right-0 lg:top-6 xl:right-1/3 min-[1700px]:right-1/2 z-0"
+                  src={arrow}
+                  alt=""
+                />
+                <div className="bg-black rounded-3xl h-[175px] min-w-[200px] md:w-[345px]"></div>
+                <div className="text-[#212121]">
+                  <div className="flex flex-row items-center gap-x-2">
+                    <img className="w-9 h-9" src={videoFile} alt="" />
+                    <p className="text-sm">Nama FIle.Mov</p>
                   </div>
+                  <div className="mt-4 flex flex-col md:flex-row gap-6">
+                    <div className="flex flex-col gap-y-1">
+                      <p className="text-sm text-[#C9C9C9]">Original File</p>
+                      <p className="text-sm">100 MB</p>
+                    </div>
+                    <div className="hidden md:block min-h-[38px] w-[1px] bg-[#C9C9C9]"></div>
+                    <div className="flex flex-col gap-y-1">
+                      <p className="text-sm text-[#C9C9C9]">Hasil Kompresi</p>
+                      <div className="flex flex-row items-center gap-1">
+                        <p className="border border-[#0366FF] bg-[#E6F0FF] px-[10px] py-[2px] rounded font-bold text-[#0366FF] text-center text-sm">
+                          10 MB
+                        </p>
+                        <p className="text-sm">(-90%)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <Button className="mt-6 rounded-[10px] bg-[#0366FF]">
+                    Unduh Hasil Kompresi
+                  </Button>
                 </div>
-                <Button className="bg-[#0366FF] w-full">Compress</Button>
               </div>
             </div>
           </div>
@@ -153,7 +316,7 @@ export default function Home() {
         id="homeIntro"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className="px-8 md:px-32 pt-16 lg:pt-20 min-[1700px]:w-[1700px]">
+        <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
           <div className="text-[#212121] text-center relative z-10">
             <h1 className="text-center font-bold text-xl lg:text-2xl">
               Semua Beres Di Tuntasinaja
@@ -168,23 +331,38 @@ export default function Home() {
               Tuntasinaja, semuanya beres!
             </p>
           </div>
-          <div>
+          <div className="mt-10 lg:mt-20 flex justify-center relative">
+            <img
+              className="pointer-events-none absolute top-0 -left-10 lg:left-20 z-10"
+              src={homeIntro1}
+              alt=""
+            />
+            <img
+              className="pointer-events-none absolute bottom-0 -right-10 lg:right-20 z-10"
+              src={homeIntro2}
+              alt=""
+            />
             <Player
-              src="https://lottie.host/466f6bde-1da8-40ee-bae3-a619f7776440/phbTMHU19j.json"
-              className="player h-[420px]"
+              src="https://lottie.host/65bd3ccc-313f-430a-b064-22ea4f6c0738/1zY3eMRnmJ.json"
+              className="player md:w-[400px] lg:w-[800px] relative z-10"
               loop
               autoplay
             />
-            <DotLottieReact
-              src="https://lottie.host/466f6bde-1da8-40ee-bae3-a619f7776440/phbTMHU19j.json"
-              loop
-              autoplay
+            <img
+              className="hidden lg:block pointer-events-none absolute bottom-0 right-20 z-0"
+              src={contactEllipse}
+              alt=""
+            />
+            <img
+              className="hidden lg:block pointer-events-none absolute top-0 left-20 z-0"
+              src={contactEllipse}
+              alt=""
             />
           </div>
         </div>
       </section>
 
-      <section id="homeLogo" className="pt-12 md:pt-16">
+      <section id="homeLogo">
         <div className="relative overflow-hidden">
           <Autoplay />
         </div>
@@ -276,7 +454,10 @@ export default function Home() {
               alt=""
             />
             <div className="flex flex-col justify-between h-full gap-6">
-              <div className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3">
+              <div
+                data-aos="fade-down"
+                className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3"
+              >
                 <div className="min-w-fit p-[10px] text-sm text-[#0366FF] bg-[#E6F0FF] border border-[#0366FF] rounded-xl">
                   Step 1
                 </div>
@@ -290,7 +471,11 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3">
+              <img className="h-[43px]" src={stepIcon} alt="" />
+              <div
+                data-aos="fade-down"
+                className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3"
+              >
                 <div className="min-w-fit p-[10px] text-sm text-[#0366FF] bg-[#E6F0FF] border border-[#0366FF] rounded-xl">
                   Step 2
                 </div>
@@ -304,7 +489,11 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3">
+              <img className="h-[43px]" src={stepIcon} alt="" />
+              <div
+                data-aos="fade-down"
+                className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3"
+              >
                 <div className="min-w-fit p-[10px] text-sm text-[#0366FF] bg-[#E6F0FF] border border-[#0366FF] rounded-xl">
                   Step 3
                 </div>
@@ -439,7 +628,7 @@ export default function Home() {
       >
         <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px] flex flex-col gap-y-10">
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
-            <div className="relative">
+            <div data-aos="fade-right" className="relative">
               <img
                 className="w-[350px] lg:w-[500px] relative z-10 items-end"
                 src={homeGambar}
@@ -451,7 +640,7 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="text-[#212121] relative z-10">
+            <div data-aos="fade-left" className="text-[#212121] relative z-10">
               <div className="w-fit p-[10px] font-bold text-sm text-[#0366FF] bg-[#E6F0FF] border border-[#0366FF] rounded-xl flex flex-row items-center">
                 <img className="mr-1" src={feature} alt="" />
                 Fitur
@@ -471,7 +660,10 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
-            <div className="relative order-first lg:order-last">
+            <div
+              data-aos="fade-right"
+              className="relative order-first lg:order-last"
+            >
               <img
                 className="w-[350px] lg:w-[500px] relative z-10 items-end"
                 src={homeCctv}
@@ -483,7 +675,7 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="text-[#212121] relative z-10">
+            <div data-aos="fade-left" className="text-[#212121] relative z-10">
               <div className="w-fit p-[10px] font-bold text-sm text-[#0366FF] bg-[#E6F0FF] border border-[#0366FF] rounded-xl flex flex-row items-center">
                 <img className="mr-1" src={feature} alt="" />
                 Fitur
@@ -504,7 +696,7 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
-            <div className="relative">
+            <div data-aos="fade-right" className="relative">
               <img
                 className="w-[350px] lg:w-[500px] relative z-10 items-end"
                 src={homeFile}
@@ -516,7 +708,7 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="text-[#212121] relative z-10">
+            <div data-aos="fade-left" className="text-[#212121] relative z-10">
               <div className="w-fit p-[10px] font-bold text-sm text-[#0366FF] bg-[#E6F0FF] border border-[#0366FF] rounded-xl flex flex-row items-center">
                 <img className="mr-1" src={feature} alt="" />
                 Fitur
