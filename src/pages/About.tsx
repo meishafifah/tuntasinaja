@@ -30,11 +30,13 @@ import aboutOurServices3 from "../assets/img/aboutOurServices3.png";
 import aboutOurServices4 from "../assets/img/aboutOurServices4.png";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import Chatbot from "@/components/Chatbot";
 
 export default function About() {
   return (
     <div className="min-h-screen w-full relative">
       <Navbar />
+      <Chatbot />
       <section id="about"
         data-navbar-color="bg-[#0366FF]"
         className="rounded-bl-[100px] md:rounded-bl-[150px] lg:rounded-bl-[200px] bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
