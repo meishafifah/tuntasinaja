@@ -90,10 +90,10 @@ export default function About() {
 
       <section
         id="aboutTraction"
-        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
+        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden bg-white"
       >
-        <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px] bg-white">
-          <h2 className="mb-6 font-bold text-xl lg:text-2xl text-[#212121] text-center">
+        <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
+          <h2 className="b-6 font-bold text-xl lg:text-2xl text-[#212121] text-center">
             Tuntasinaja Dalam Angka
           </h2>
           <div className="rounded-[20px] text-[#212121] bg-[#FBFBFB] p-6 grid md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-10 md:gap-6">

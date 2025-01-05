@@ -49,14 +49,14 @@ export default function Navbar() {
   return (
     <section
       id="navbar"
-      className={`lg:pb-0 lg:fixed top-0 left-0 right-0 w-full z-20 ${navbarBg}`}
+      className={`lg:pb-0 lg:fixed top-0 left-0 right-0 w-full z-30 ${navbarBg}`}
     >
       <div className="w-full flex justify-center bg-transparent">
         <div className="w-full max-w-[1700px] rounded-3xl lg:backdrop-blur-md bg-[#F5F5F5]/50 flex justify-between items-center my-8 py-3 px-6 lg:py-4 mx-4 lg:mx-32">
           <a className="flex items-center" href="/">
             <img className="h-12" src={logo} alt="Logo" />
           </a>
-          <div className="w-auto lg:w-full flex justify-between lg:justify-center items-center z-20">
+          <div className="w-auto lg:w-full flex justify-between lg:justify-center items-center z-30">
             <NavigationMenu className="hidden lg:block">
               <NavigationMenuList className="flex justify-between gap-16">
                 <NavigationMenuItem>
@@ -102,7 +102,7 @@ export default function Navbar() {
 
           <div
             onClick={() => setOpenMenu(false)}
-            className={`lg:hidden duration-500 fixed inset-0 bg-black z-20 ${
+            className={`lg:hidden duration-500 fixed inset-0 bg-black z-30 ${
               openMenu
                 ? "opacity-50 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
@@ -110,7 +110,7 @@ export default function Navbar() {
           ></div>
 
           <div
-            className={`lg:hidden duration-500 w-full fixed right-0 top-0 z-20 bg-[#F5F5F5] px-6 shadow-2xl ${
+            className={`lg:hidden duration-500 w-full fixed right-0 top-0 z-30 bg-[#F5F5F5] px-6 shadow-2xl ${
               openMenu ? "translate-x-0" : "translate-x-full"
             }`}
           >

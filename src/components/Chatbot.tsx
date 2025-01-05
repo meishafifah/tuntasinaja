@@ -8,7 +8,7 @@ export default function Chatbot() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="relative z-20">
+    <div className={`relative ${openMenu ? 'z-50' : 'z-20'}`}>
       <button
         className="z-20"
         type="button"
