@@ -8,9 +8,9 @@ export default function Chatbot() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-20">
       <button
-        className="z-50"
+        className="z-20"
         type="button"
         onClick={() => setOpenMenu(!openMenu)}
       >

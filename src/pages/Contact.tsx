@@ -83,7 +83,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Link
               to={"/contact"}
-              className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4"
+              className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4 hover:bg-[#CDE0FF] hover:scale-110 duration-700"
             >
               <div className="w-16 h-16 aspect-square bg-[#CDE0FF] rounded-full flex items-center justify-center">
                 <img className="w-10 h-10" src={whatsapp} alt="Whatsapp" />
@@ -95,7 +95,7 @@ export default function Contact() {
             </Link>
             <Link
               to={"/contact"}
-              className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4"
+              className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4 hover:bg-[#CDE0FF] hover:scale-110 duration-700"
             >
               <div className="w-16 h-16 aspect-square bg-[#CDE0FF] rounded-full flex items-center justify-center">
                 <img className="w-10 h-10" src={telegram} alt="Telegram" />
@@ -107,7 +107,7 @@ export default function Contact() {
             </Link>
             <Link
               to={"/contact"}
-              className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4"
+              className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4 hover:bg-[#CDE0FF] hover:scale-110 duration-700"
             >
               <div className="w-16 h-16 aspect-square bg-[#CDE0FF] rounded-full flex items-center justify-center">
                 <img className="w-10 h-10" src={mail} alt="Mail" />
@@ -127,7 +127,7 @@ export default function Contact() {
       >
         <div className="relative z-10 px-8 md:px-32 py-16 lg:py-20 lg:p-0 w-full lg:w-1/2 min-[1700px]:w-1/4">
           <img
-            className="pointer-events-none absolute -top-16 right-2 md:-top-16 md:right-20 lg:top-0 lg:right-0 z-0"
+            className="pointer-events-none absolute -top-16 right-2 md:-top-16 md:right-20 lg:top-8 lg:right-0 z-0 animate-bounce"
             src={arrow}
             alt=""
           />

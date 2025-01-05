@@ -17,7 +17,6 @@ import logo from "../assets/img/homeLogo.png";
 import homeGambar from "../assets/img/homeGambar.png";
 import homeCctv from "../assets/img/homeCctv.png";
 import homeFile from "../assets/img/homeFile.png";
-// import homeSuperior from "../assets/img/homeSuperior.png";
 import homeIntro1 from "../assets/img/homeIntro1.png";
 import homeIntro2 from "../assets/img/homeIntro2.png";
 import feature from "../assets/img/feature.svg";
@@ -40,6 +39,7 @@ import icon10 from "../assets/img/heroIcon/icon10.svg";
 import icon11 from "../assets/img/heroIcon/icon11.svg";
 import icon12 from "../assets/img/heroIcon/icon12.svg";
 import arrow from "../assets/img/arrow.svg";
+import arrow1 from "../assets/img/arrow1.svg";
 import { useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import Chatbot from "@/components/Chatbot";
@@ -110,7 +110,7 @@ export default function Home() {
         id="compression"
         className="bg-[url('/src/assets/img/dotted.png')] py-10 relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className=" relative z-10 px-8 lg:px-20 xl:px-32 pt-0 md:pt-16 lg:pt-40 min-[1700px]:w-[1700px] grid grid-cols-1 xl:grid-cols-2 gap-10 xl:gap-5 items-center justify-center">
+        <div className=" relative z-10 px-8 lg:px-20 xl:px-32 pt-0 md:pt-16 lg:pt-40 min-[1700px]:w-[1700px] grid grid-cols-1 min-[1440px]:grid-cols-2 gap-10 xl:gap-5 items-center justify-center">
           <div className="relative z-10 text-center mx-auto md:content-center md:w-[550px] md:h-[550px] md:border-2 md:border-dashed md:border-[#9F9F9F] md:rounded-full">
             <div className="hidden absolute inset-0 md:flex items-center justify-center">
               <div className="relative w-full h-full animate-spin-slow">
@@ -160,8 +160,8 @@ export default function Home() {
             </p>
           </div>
           <img
-            className="hidden md:block -scale-x-[1] rotate-[325deg] pointer-events-none absolute top-2/3 left-0 xl:top-1/3 xl:left-[45%] min-[1700px]:left-[55%] z-20"
-            src={arrow}
+            className="hidden md:block pointer-events-none absolute top-2/3 left-0 min-[1440px]:top-1/3 min-[1440px]:left-[45%] min-[1700px]:left-[55%] z-20 animate-bounce"
+            src={arrow1}
             alt=""
           />
           <form
@@ -274,9 +274,9 @@ export default function Home() {
               <h1 className="mb-6 font-bold text-xl lg:text-2xl">
                 Hasil Kompresi
               </h1>
-              <div className="flex flex-col lg:flex-row lg:items-center gap-6 relative">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-6 relative z-0">
                 <img
-                  className="hidden md:block pointer-events-none absolute top-56 right-0 lg:top-6 xl:right-1/3 min-[1700px]:right-1/2 z-0"
+                  className="hidden md:block pointer-events-none absolute top-56 right-0 lg:top-10 lg:right-20 min-[1440px]:right-1/3 min-[1700px]:right-1/2 z-0 animate-bounce"
                   src={arrow}
                   alt=""
                 />
@@ -302,7 +302,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <Button className="mt-6 rounded-[10px] bg-[#0366FF]">
+                  <Button className="mt-6 rounded-[10px] bg-[#0366FF] relative z-10">
                     Unduh Hasil Kompresi
                   </Button>
                 </div>
@@ -384,7 +384,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-9 grid md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-10 md:gap-6">
-            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
               <img className="w-12" src={hematBeban} alt="" />
               <h2 className="mt-4 mb-3 font-bold text-base">
                 Hemat Beban Upto 95%
@@ -394,7 +394,7 @@ export default function Home() {
                 mengurangi ukuran data hingga 95% tanpa mengorbankan kualitas.
               </p>
             </div>
-            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
               <img className="w-12" src={hematWaktu} alt="" />
               <h2 className="mt-4 mb-3 font-bold text-base">
                 Hemat Waktu Transfer
@@ -404,7 +404,7 @@ export default function Home() {
                 transfer data menjadi jauh lebih cepat dan efisien.
               </p>
             </div>
-            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
               <img className="w-12" src={hematTempat} alt="" />
               <h2 className="mt-4 mb-3 font-bold text-base">
                 Hemat Tempat Penyimpanan
@@ -415,7 +415,7 @@ export default function Home() {
                 95%
               </p>
             </div>
-            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+            <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
               <img className="w-12" src={kualitasVideo} alt="" />
               <h2 className="mt-4 mb-3 font-bold text-base">
                 Kualitas Tetap Terjaga
@@ -449,6 +449,7 @@ export default function Home() {
           </h2>
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
             <img
+              data-aos="fade-right"
               className="w-[350px] lg:w-[500px] relative z-10"
               src={homeSteps}
               alt=""
@@ -471,7 +472,12 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <img className="h-[43px]" src={stepIcon} alt="" />
+              <img
+                data-aos="fade-down"
+                className="h-[43px]"
+                src={stepIcon}
+                alt=""
+              />
               <div
                 data-aos="fade-down"
                 className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3"
@@ -489,7 +495,12 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <img className="h-[43px]" src={stepIcon} alt="" />
+              <img
+                data-aos="fade-down"
+                className="h-[43px]"
+                src={stepIcon}
+                alt=""
+              />
               <div
                 data-aos="fade-down"
                 className="flex flex-col sm:flex-row items-start bg-white rounded-3xl p-4 gap-3"
@@ -539,7 +550,7 @@ export default function Home() {
               <div className="absolute inset-0 flex items-end justify-center p-4">
                 <div className="bg-[#F5F5F5]/50 backdrop-blur-sm p-4 rounded-[20px] grid grid-cols-2 gap-1 md:flex md:space-x-4 md:gap-0">
                   <button
-                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
                       selectedImage === "original"
                         ? "bg-[#0366FF] text-white border-none"
                         : "bg-transparent text-white"
@@ -550,7 +561,7 @@ export default function Home() {
                     <p>1GB</p>
                   </button>
                   <button
-                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
                       selectedImage === "medium"
                         ? "bg-[#0366FF] text-white border-none"
                         : "bg-transparent text-white"
@@ -561,7 +572,7 @@ export default function Home() {
                     <p>500MB (-50%)</p>
                   </button>
                   <button
-                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
                       selectedImage === "high"
                         ? "bg-[#0366FF] text-white border-none"
                         : "bg-transparent text-white"
@@ -572,7 +583,7 @@ export default function Home() {
                     <p>100MB (-70%)</p>
                   </button>
                   <button
-                    className={`px-4 py-2 rounded-xl border border-white text-[10px] ${
+                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
                       selectedImage === "customizable"
                         ? "bg-[#0366FF] text-white border-none"
                         : "bg-transparent text-white"
@@ -745,7 +756,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-11 text-[#212121] grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-6 ">
-            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4 hover:scale-105 duration-700">
               <img className="w-12" src={faceReco} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">
@@ -757,7 +768,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4 hover:scale-105 duration-700">
               <img className="w-12" src={botCall} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">Bot Call</p>
@@ -768,7 +779,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4 hover:scale-105 duration-700">
               <img className="w-12" src={dataAnalytic} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">
@@ -780,7 +791,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4">
+            <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4 hover:scale-105 duration-700">
               <img className="w-12" src={iot} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">

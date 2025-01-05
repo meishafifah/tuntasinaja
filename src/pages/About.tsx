@@ -15,7 +15,7 @@ import solusiDigital from "../assets/img/solusiDigital.svg";
 import dukungan from "../assets/img/dukungan.svg";
 import aboutVisi from "../assets/img/aboutVisi.svg";
 import aboutVisi1 from "../assets/img/aboutVisi1.png";
-import arrow from "../assets/img/arrow.svg";
+import arrow1 from "../assets/img/arrow1.svg";
 import aboutOurStory from "../assets/img/aboutOurStory.png";
 import contactEllipse from "../assets/img/contactEllipse.png";
 import kompresiCctv from "../assets/img/kompresiCctv.png";
@@ -31,63 +31,73 @@ import aboutOurServices4 from "../assets/img/aboutOurServices4.png";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Chatbot from "@/components/Chatbot";
+import { useEffect } from "react";
+import AOS from "aos";
 
 export default function About() {
+    useEffect(() => {
+      AOS.init({
+        once: true,
+        disable: "phone",
+        duration: 2000,
+        easing: "ease-out-cubic",
+      });
+    }, []);
   return (
-    <div className="min-h-screen w-full relative">
+    <div className="min-h-screen w-full relative bg-[#0366FF]">
       <Navbar />
       <Chatbot />
-      <section id="about"
-        data-navbar-color="bg-[#0366FF]"
-        className="rounded-bl-[100px] md:rounded-bl-[150px] lg:rounded-bl-[200px] bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
-      >
-        <img
-          className="absolute top-4 -left-20 lg:-top-10 lg:left-0 z-0 pointer-events-none"
-          src={aboutHero1}
-          alt=""
-        />
-        <img
-          className="absolute top-12 right-12 lg:-bottom-96 lg:left-10 z-0 pointer-events-none"
-          src={aboutHero2}
-          alt=""
-        />
-        <img
-          className="hidden lg:block absolute -top-[130px] -right-80 z-0 pointer-events-none"
-          src={aboutHero3}
-          alt=""
-        />
-        <div className="px-8 md:px-32 pb-16 lg:pt-40 lg:pb-10 min-[1700px]:w-[1700px]">
-          <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
-            <div>
-              <h1 className="text-white font-bold text-2xl lg:text-4xl">
-                Tentang Tuntasinaaja
-              </h1>
-              <p className="text-white mt-4 lg:text-base">
-                Perusahaan teknologi inovatif yang berfokus pada solusi kompresi
-                data untuk kebutuhan bisnis modern. Kami berdedikasi untuk
-                membantu perusahaan di berbagai industri dalam mengoptimalkan
-                penggunaan data dengan cara yang lebih efisien, cepat, dan hemat
-                biaya.
-              </p>
+      <section id="about" data-navbar-color="bg-[#0366FF]" className="bg-white">
+        <div className="rounded-bl-[100px] md:rounded-bl-[150px] lg:rounded-bl-[200px] bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden">
+          <img
+            className="absolute top-4 -left-20 lg:-top-10 lg:left-0 z-0 pointer-events-none"
+            src={aboutHero1}
+            alt=""
+          />
+          <img
+            className="absolute top-12 right-12 lg:-bottom-96 lg:left-10 z-0 pointer-events-none"
+            src={aboutHero2}
+            alt=""
+          />
+          <img
+            className="hidden lg:block absolute -top-[130px] -right-80 z-0 pointer-events-none"
+            src={aboutHero3}
+            alt=""
+          />
+          <div className="px-8 md:px-32 pb-16 lg:pt-40 lg:pb-10 min-[1700px]:w-[1700px]">
+            <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
+              <div>
+                <h1 className="text-white font-bold text-2xl lg:text-4xl">
+                  Tentang Tuntasinaaja
+                </h1>
+                <p className="text-white mt-4 lg:text-base">
+                  Perusahaan teknologi inovatif yang berfokus pada solusi
+                  kompresi data untuk kebutuhan bisnis modern. Kami berdedikasi
+                  untuk membantu perusahaan di berbagai industri dalam
+                  mengoptimalkan penggunaan data dengan cara yang lebih efisien,
+                  cepat, dan hemat biaya.
+                </p>
+              </div>
+              <img
+                className="w-[350px] lg:w-[500px] order-first lg:order-last hover:scale-110 duration-700"
+                src={aboutHero}
+                alt=""
+              />
             </div>
-            <img
-              className="w-[350px] lg:w-[500px] order-first lg:order-last"
-              src={aboutHero}
-              alt=""
-            />
           </div>
         </div>
       </section>
 
-      <section id="aboutTraction"
+      <section
+        id="aboutTraction"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
+        <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px] bg-white">
           <h2 className="mb-6 font-bold text-xl lg:text-2xl text-[#212121] text-center">
             Tuntasinaja Dalam Angka
           </h2>
           <div className="rounded-[20px] text-[#212121] bg-[#FBFBFB] p-6 grid md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-10 md:gap-6">
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
               <img className="w-12" src={tahun} alt="" />
               <h2 className="mt-4 font-semibold text-xl lg:text-2xl">
                 +3 Tahun
@@ -96,7 +106,7 @@ export default function About() {
                 Pengalaman mengembangkan teknologi
               </p>
             </div>
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
               <img className="w-12" src={fileKompress} alt="" />
               <h2 className="mt-4 font-semibold text-xl lg:text-2xl">
                 +10 Ribu
@@ -105,14 +115,14 @@ export default function About() {
                 File video yang teah berhasil di kompresi
               </p>
             </div>
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
               <img className="w-12" src={client} alt="" />
               <h2 className="mt-4 font-semibold text-xl lg:text-2xl">+300</h2>
               <p className="mt-2 text-sm lg:text-base">
                 Klien dari berbagai perusahaan puas bersama kami
               </p>
             </div>
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
               <img className="w-12" src={ukuranFile} alt="" />
               <h2 className="mt-4 font-semibold text-xl lg:text-2xl">+500MB</h2>
               <p className="mt-2 text-sm lg:text-base">
@@ -123,8 +133,9 @@ export default function About() {
         </div>
       </section>
 
-      <section id="aboutVisiMisi"
-        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
+      <section
+        id="aboutVisiMisi"
+        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden bg-white"
       >
         <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
           <div className="text-[#212121] grid grid-cols-1 lg:grid-cols-2 justify-items-center items-start gap-10 ">
@@ -140,8 +151,8 @@ export default function About() {
                 alt=""
               />
               <img
-                className="-scale-x-[1] rotate-[325deg] absolute z-0 top-16 -left-8 md:top-16 md:-left-10 lg:top-44 lg:left-44 pointer-events-none"
-                src={arrow}
+                className="absolute z-0 top-16 -left-8 md:top-16 md:-left-10 lg:top-44 lg:left-44 pointer-events-none animate-bounce"
+                src={arrow1}
                 alt=""
               />
               <h1 className="mb-8 text-center lg:text-start font-bold text-xl lg:text-2xl">
@@ -158,14 +169,14 @@ export default function About() {
                 Misi Kami
               </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
                   <img className="w-12" src={layananTeknologi} alt="" />
                   <p className="mt-4 text-sm lg:text-base">
                     Menyediakan layanan teknologi yang disesuaikan untuk
                     memenuhi kebutuhan spesifik setiap klien.
                   </p>
                 </div>
-                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
                   <img className="w-12" src={perkembanganTeknologi} alt="" />
                   <p className="mt-4 text-sm lg:text-base">
                     Fokus pada pengembangan produk utama kami, termasuk jasa
@@ -173,14 +184,14 @@ export default function About() {
                     serta solusi penyimpanan server yang efisien.
                   </p>
                 </div>
-                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
                   <img className="w-12" src={solusiDigital} alt="" />
                   <p className="mt-4 text-sm lg:text-base">
                     Membantu mereka memahami dan mengadopsi solusi digital yang
                     relevan
                   </p>
                 </div>
-                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl">
+                <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
                   <img className="w-12" src={dukungan} alt="" />
                   <p className="mt-4 text-sm lg:text-base">
                     Memberikan dukungan kepada perusahaan yang belum sepenuhnya
@@ -193,12 +204,14 @@ export default function About() {
         </div>
       </section>
 
-      <section id="aboutOurStory"
+      <section
+        id="aboutOurStory"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
-        <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
+        <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px] bg-white">
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
             <img
+             data-aos="fade-right"
               className="w-[350px] lg:w-[500px] relative z-10"
               src={aboutOurStory}
               alt=""
@@ -208,7 +221,7 @@ export default function About() {
               src={contactEllipse}
               alt=""
             />
-            <div className="text-[#212121] relative z-10">
+            <div data-aos="fade-left" className="text-[#212121] relative z-10">
               <h1 className="text-center lg:text-start font-bold text-xl lg:text-2xl">
                 Our Back story
               </h1>
@@ -231,7 +244,8 @@ export default function About() {
         </div>
       </section>
 
-      <section id="aboutTechnology"
+      <section
+        id="aboutTechnology"
         className="bg-[#E6F0FF] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 py-20 xl:py-28 min-[1700px]:w-[1700px] relative">
@@ -252,7 +266,7 @@ export default function About() {
             <div className="relative z-10">
               <Link to={"/"}>
                 <img
-                  className="w-[350px] xl:w-[500px]"
+                  className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
                   src={kompresiCctv}
                   alt=""
                 />
@@ -261,7 +275,7 @@ export default function About() {
             <div className="relative z-10">
               <Link to={"/"}>
                 <img
-                  className="w-[350px] xl:w-[500px]"
+                  className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
                   src={kompresiFile}
                   alt=""
                 />
@@ -270,7 +284,7 @@ export default function About() {
             <div className="relative z-10">
               <Link to={"/"}>
                 <img
-                  className="w-[350px] xl:w-[500px]"
+                  className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
                   src={kompresiImage}
                   alt=""
                 />
@@ -285,12 +299,14 @@ export default function About() {
         </div>
       </section>
 
-      <section id="aboutOurServices"
+      <section
+        id="aboutOurServices"
         className="bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
         <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
             <img
+             data-aos="fade-right"
               className="w-[350px] lg:w-[500px] relative z-10"
               src={aboutOurServices}
               alt=""
@@ -315,7 +331,7 @@ export default function About() {
               src={aboutOurServices4}
               alt=""
             />
-            <div className="text-white relative z-10">
+            <div data-aos="fade-left" className="text-white relative z-10">
               <h1 className="mb-8 text-center lg:text-start font-bold text-xl lg:text-[32px]">
                 Lebih dari Sekadar Kompresi, Kami adalah Solusi Teknologi
                 Terkini

@@ -12,7 +12,7 @@ export default function Faq() {
   const [isOpen, setIsOpen] = useState<string | null>(null);
 
   return (
-    <section className="faq bg-[url('/src/assets/img/dotted.png')] pt-10 w-full min-[1700px]:w-[1700px] mx-auto">
+    <section className="faq bg-white bg-[url('/src/assets/img/dotted.png')] pt-10 w-full min-[1700px]:w-[1700px] mx-auto">
     <div className="py-20 px-8 md:px-32">
       <div className="flex flex-col lg:flex-row gap-6 ">
       <div className="w-full lg:w-1/3">
