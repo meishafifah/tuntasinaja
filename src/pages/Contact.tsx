@@ -65,6 +65,7 @@ export default function Contact() {
       <img className="absolute top-0 right-0 z-0" src={contactHero2} alt="" />
 
       <Navbar />
+
       <Chatbot />
       
       <section
@@ -106,7 +107,7 @@ export default function Contact() {
               </div>
             </Link>
             <Link
-              to={"/contact"}
+              to={"mailto:sales@tuntasinaja.id"}
               className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4 hover:bg-[#CDE0FF] hover:scale-110 duration-700"
             >
               <div className="w-16 h-16 aspect-square bg-[#CDE0FF] rounded-full flex items-center justify-center">
@@ -127,7 +128,7 @@ export default function Contact() {
       >
         <div className="relative z-10 px-8 md:px-32 py-16 lg:py-20 lg:p-0 w-full lg:w-1/2 min-[1700px]:w-1/4">
           <img
-            className="pointer-events-none absolute -top-16 right-2 md:-top-16 md:right-20 lg:top-8 lg:right-0 z-0 animate-bounce"
+            className="pointer-events-none absolute -top-16 right-2 md:-top-16 md:right-20 lg:top-10 lg:right-0 z-0 animate-bounce"
             src={arrow}
             alt=""
           />

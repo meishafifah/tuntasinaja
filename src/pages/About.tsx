@@ -1,6 +1,7 @@
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import aboutFounder from "../assets/img/aboutFounder.png";
 import aboutHero from "../assets/img/aboutHero.png";
 import aboutHero1 from "../assets/img/aboutHero1.png";
 import aboutHero2 from "../assets/img/aboutHero2.png";
@@ -35,14 +36,14 @@ import { useEffect } from "react";
 import AOS from "aos";
 
 export default function About() {
-    useEffect(() => {
-      AOS.init({
-        once: true,
-        disable: "phone",
-        duration: 2000,
-        easing: "ease-out-cubic",
-      });
-    }, []);
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: "phone",
+      duration: 2000,
+      easing: "ease-out-cubic",
+    });
+  }, []);
   return (
     <div className="min-h-screen w-full relative bg-[#0366FF]">
       <Navbar />
@@ -93,7 +94,7 @@ export default function About() {
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden bg-white"
       >
         <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
-          <h2 className="b-6 font-bold text-xl lg:text-2xl text-[#212121] text-center">
+          <h2 className="mb-6 font-bold text-xl lg:text-2xl text-[#212121] text-center">
             Tuntasinaja Dalam Angka
           </h2>
           <div className="rounded-[20px] text-[#212121] bg-[#FBFBFB] p-6 grid md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-10 md:gap-6">
@@ -151,7 +152,7 @@ export default function About() {
                 alt=""
               />
               <img
-                className="absolute z-0 top-16 -left-8 md:top-16 md:-left-10 lg:top-44 lg:left-44 pointer-events-none animate-bounce"
+                className="absolute z-0 top-20 -left-12 md:top-18 md:-left-12 lg:top-44 lg:left-44 pointer-events-none animate-bounce"
                 src={arrow1}
                 alt=""
               />
@@ -206,12 +207,12 @@ export default function About() {
 
       <section
         id="aboutOurStory"
-        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
+        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden bg-white"
       >
-        <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px] bg-white">
+        <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
             <img
-             data-aos="fade-right"
+              data-aos="fade-right"
               className="w-[350px] lg:w-[500px] relative z-10"
               src={aboutOurStory}
               alt=""
@@ -245,6 +246,43 @@ export default function About() {
       </section>
 
       <section
+        id="aboutFounder"
+        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden bg-white"
+      >
+        <div className="px-8 md:px-32 py-16 xl:py-28 min-[1700px]:w-[1700px] relative flex justify-center">
+          <div className="text-[#212121] text-center relative flex flex-col items-center z-10 w-full md:w-3/4 lg:w-2/3">
+            <h1 className="text-center font-bold text-xl lg:text-2xl">
+              Tim Hebat di Balik Solusi Tuntasinaja
+            </h1>
+            <p className="mt-4 text-sm lg:text-base relative z-1">
+              Tim kami terdiri dari para profesional berpengalaman yang
+              berdedikasi untuk menghadirkan solusi inovatif.
+            </p>
+            <div className="relative z-10">
+              <img
+                className="absolute z-0 -top-8 -left-10 pointer-events-none"
+                src={contactEllipse}
+                alt=""
+              />
+              <img
+                src={aboutFounder}
+                className="mt-8 w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] hover:scale-110 duration-700 relative z-10"
+                alt=""
+              />
+            </div>
+            <div className="mt-8">
+              <h2 className="text-center font-bold text-base lg:text-xl">
+                Nicholas Tjhin
+              </h2>
+              <p className="mt-2 text-[#0366FF] text-sm lg:text-base relative z-1">
+                Founder
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
         id="aboutTechnology"
         className="bg-[#E6F0FF] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
@@ -264,7 +302,7 @@ export default function About() {
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-6">
             <div className="relative z-10">
-              <Link to={"/"}>
+              <Link to={"/contact"}>
                 <img
                   className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
                   src={kompresiCctv}
@@ -273,7 +311,7 @@ export default function About() {
               </Link>
             </div>
             <div className="relative z-10">
-              <Link to={"/"}>
+              <Link to={"/contact"}>
                 <img
                   className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
                   src={kompresiFile}
@@ -282,7 +320,7 @@ export default function About() {
               </Link>
             </div>
             <div className="relative z-10">
-              <Link to={"/"}>
+              <Link to={"/contact"}>
                 <img
                   className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
                   src={kompresiImage}
@@ -306,7 +344,7 @@ export default function About() {
         <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
           <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
             <img
-             data-aos="fade-right"
+              data-aos="fade-right"
               className="w-[350px] lg:w-[500px] relative z-10"
               src={aboutOurServices}
               alt=""
@@ -340,7 +378,7 @@ export default function About() {
                 “ Kami Menerima permintaan khusus dari pelanggan untuk
                 mengembangkan teknologi yang spesifik sesuai kebutuhan mereka “
               </p>
-              <Link to={"/"}>
+              <Link to={"/contact"}>
                 <Button className="mt-8 bg-white hover:bg-white/70 text-sm lg:text-base text-[#212121] rounded-[10px]">
                   Pesan Layanan Kami Sekarang!
                 </Button>

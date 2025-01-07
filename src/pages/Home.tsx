@@ -1,5 +1,6 @@
-import { Player } from "@lottiefiles/react-lottie-player";
+// import { Player } from "@lottiefiles/react-lottie-player";
 // import Rive from "@rive-app/react-canvas";
+import heroHomeIntro from "../assets/img/heroHomeIntro.svg";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -346,12 +347,13 @@ export default function Home() {
               src={homeIntro2}
               alt=""
             />
-            <Player
+            <img className="player md:w-[400px] lg:w-[800px] relative z-10" src={heroHomeIntro} alt="" />
+            {/* <Player
               src="https://lottie.host/65bd3ccc-313f-430a-b064-22ea4f6c0738/1zY3eMRnmJ.json"
               className="player md:w-[400px] lg:w-[800px] relative z-10"
               loop
               autoplay
-            />
+            /> */}
             <img
               className="hidden lg:block pointer-events-none absolute bottom-0 right-20 z-0"
               src={contactEllipse}
@@ -366,11 +368,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="homeLogo">
+      {/* <section id="homeLogo">
         <div className="relative overflow-hidden">
           <Autoplay />
         </div>
-      </section>
+      </section> */}
 
       <section
         id="homeSuperiority"
@@ -606,7 +608,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
+      {/* <section
         id="homeMitra"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
@@ -635,7 +637,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         id="homeFeatures"

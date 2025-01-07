@@ -76,7 +76,7 @@ export default function Navbar() {
                     )}`}
                     href="/about"
                   >
-                    Tentang
+                    Tentang Kami
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -110,7 +110,7 @@ export default function Navbar() {
           ></div>
 
           <div
-            className={`lg:hidden duration-500 w-full fixed right-0 top-0 z-30 bg-[#F5F5F5] px-6 shadow-2xl ${
+            className={`lg:hidden duration-500 w-full fixed right-0 top-0 z-30 bg-[#F5F5F5] px-6 shadow-2xl rounded-b-3xl ${
               openMenu ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -128,7 +128,7 @@ export default function Navbar() {
                 <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link to={"/about"}>Tentang</Link>
+                <Link to={"/about"}>Tentang Kami</Link>
               </li>
               <li>
                 <Link to={"/contact"}>Kontak</Link>
