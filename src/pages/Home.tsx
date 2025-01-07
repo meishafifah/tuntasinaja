@@ -1,5 +1,5 @@
 import { Player } from "@lottiefiles/react-lottie-player";
-import Rive from "@rive-app/react-canvas";
+// import Rive from "@rive-app/react-canvas";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";

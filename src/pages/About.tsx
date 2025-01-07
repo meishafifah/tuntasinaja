@@ -50,17 +50,17 @@ export default function About() {
       <section id="about" data-navbar-color="bg-[#0366FF]" className="bg-white">
         <div className="rounded-bl-[100px] md:rounded-bl-[150px] lg:rounded-bl-[200px] bg-gradient-to-b from-[#0366FF] to-[#0252CC] relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden">
           <img
-            className="absolute top-4 -left-20 lg:-top-10 lg:left-0 z-0 pointer-events-none"
+            className="animate-pulse-slow absolute top-4 -left-20 lg:-top-10 lg:left-0 z-0 pointer-events-none"
             src={aboutHero1}
             alt=""
           />
           <img
-            className="absolute top-12 right-12 lg:-bottom-96 lg:left-10 z-0 pointer-events-none"
+            className="animate-pulse-slow absolute top-12 right-12 lg:-bottom-96 lg:left-10 z-0 pointer-events-none"
             src={aboutHero2}
             alt=""
           />
           <img
-            className="hidden lg:block absolute -top-[130px] -right-80 z-0 pointer-events-none"
+            className="hidden lg:block animate-pulse-slow absolute -top-[130px] -right-80 z-0 pointer-events-none"
             src={aboutHero3}
             alt=""
           />
