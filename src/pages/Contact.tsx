@@ -95,7 +95,7 @@ export default function Contact() {
               </div>
             </Link>
             <Link
-              to={"/contact"}
+              to={"https://t.me/nicholasntj"}
               className="bg-[#E6F0FF] rounded-[20px] p-4 flex items-center gap-4 hover:bg-[#CDE0FF] hover:scale-110 duration-700"
             >
               <div className="w-16 h-16 aspect-square bg-[#CDE0FF] rounded-full flex items-center justify-center">

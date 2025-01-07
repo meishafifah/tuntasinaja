@@ -2,6 +2,7 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import aboutFounder from "../assets/img/aboutFounder.png";
+import homeSteps2 from "../assets/img/homeSteps2.png";
 import aboutHero from "../assets/img/aboutHero.png";
 import aboutHero1 from "../assets/img/aboutHero1.png";
 import aboutHero2 from "../assets/img/aboutHero2.png";
@@ -249,6 +250,11 @@ export default function About() {
         id="aboutFounder"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden bg-white"
       >
+        <img
+          className="absolute z-10 top-56 right-0 w-20 lg:w-auto pointer-events-none"
+          src={homeSteps2}
+          alt=""
+        />
         <div className="px-8 md:px-32 py-16 xl:py-28 min-[1700px]:w-[1700px] relative flex justify-center">
           <div className="text-[#212121] text-center relative flex flex-col items-center z-10 w-full md:w-3/4 lg:w-2/3">
             <h1 className="text-center font-bold text-xl lg:text-2xl">

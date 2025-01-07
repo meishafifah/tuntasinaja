@@ -1,11 +1,16 @@
 // import { Player } from "@lottiefiles/react-lottie-player";
 // import Rive from "@rive-app/react-canvas";
+// import Autoplay from "@/components/Autoplay";
+// import logo from "../assets/img/homeLogo.png";
+// import { Button } from "@/components/ui/button";
+// import videoFile from "../assets/img/videoFile.svg";
+// import arrow from "../assets/img/arrow.svg";
+// import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
+import axios from "axios";
 import heroHomeIntro from "../assets/img/heroHomeIntro.svg";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
 import { Upload } from "lucide-react";
-import Autoplay from "@/components/Autoplay";
 import hematBeban from "../assets/img/hematBeban.svg";
 import hematWaktu from "../assets/img/hematWaktu.svg";
 import hematTempat from "../assets/img/hematTempat.svg";
@@ -15,7 +20,6 @@ import homeSteps1 from "../assets/img/homeSteps1.png";
 import homeSteps2 from "../assets/img/homeSteps2.png";
 import stepIcon from "../assets/img/stepIcon.svg";
 import contactEllipse from "../assets/img/contactEllipse.png";
-import logo from "../assets/img/homeLogo.png";
 import homeGambar from "../assets/img/homeGambar.png";
 import homeCctv from "../assets/img/homeCctv.png";
 import homeFile from "../assets/img/homeFile.png";
@@ -26,7 +30,6 @@ import camAi from "../assets/img/camAi.svg";
 import botCall from "../assets/img/botCall.svg";
 import dataAnalytic from "../assets/img/dataAnalytic.svg";
 import iot from "../assets/img/iot.svg";
-import videoFile from "../assets/img/videoFile.svg";
 import Faq from "@/components/Faq";
 import icon1 from "../assets/img/heroIcon/icon1.svg";
 import icon2 from "../assets/img/heroIcon/icon2.svg";
@@ -40,15 +43,14 @@ import icon9 from "../assets/img/heroIcon/icon9.svg";
 import icon10 from "../assets/img/heroIcon/icon10.svg";
 import icon11 from "../assets/img/heroIcon/icon11.svg";
 import icon12 from "../assets/img/heroIcon/icon12.svg";
-import arrow from "../assets/img/arrow.svg";
 import arrow1 from "../assets/img/arrow1.svg";
 import { useEffect, useState } from "react";
-import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import Chatbot from "@/components/Chatbot";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useDropzone } from "react-dropzone";
 interface UploadedFile {
+  file: File;
   name: string;
   preview: string;
 }
@@ -77,13 +79,15 @@ export default function Home() {
   };
 
   const [file, setFile] = useState<UploadedFile | null>(null);
-  const [compressionLevel, setCompressionLevel] = useState("medium");
+  const [error, setError] = useState<string | null>(null);
+  // const [compressionLevel, setCompressionLevel] = useState("medium");
 
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
       const uploadedFile = acceptedFiles[0];
       setFile({
-        name: uploadedFile.name,
+        file: uploadedFile,
+        name:uploadedFile.name,
         preview: URL.createObjectURL(uploadedFile),
       });
     }
@@ -92,15 +96,39 @@ export default function Home() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpeg", ".png", ".jpg", ".gif", ".tiff"],
+      "*/*": ["*/*"],
     },
     multiple: false,
   });
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!file) {
+      console.log("No file selected");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file.file);
+
+    try {
+      const response = await axios.post(
+        "https://api.tuntasinaja.id/web/compress",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("Responsne: ", response.data);
+    } catch (error: any) {
+      setError(error.response?.data?.error);
+      console.log(error.response?.data?.error);
+    }
     console.log("File:", file);
-    console.log("Compression Level:", compressionLevel);
+    // console.log("Compression Level:", compressionLevel);
   };
 
   return (
@@ -209,7 +237,7 @@ export default function Home() {
                     </div>
                   )}
                 </div>
-                <div className="mt-6 flex flex-col md:flex-row items-center justify-between">
+                {/* <div className="mt-6 flex flex-col md:flex-row items-center justify-between">
                   <p className="text-[#202020] mb-2">Compress to</p>
                   <RadioGroup
                     value={compressionLevel}
@@ -256,20 +284,21 @@ export default function Home() {
                       </label>
                     </div>
                   </RadioGroup>
-                </div>
+                </div> */}
                 <button
                   type="submit"
                   className="bg-[#0366FF] rounded-[10px] w-full py-2 text-white mt-6"
                 >
                   Compress
                 </button>
+                {error && <p className="text-red-500 text-center mt-4">{error}</p>}
               </div>
             </div>
           </form>
         </div>
       </section>
 
-      <section
+      {/* <section
         id="compressed"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
       >
@@ -315,7 +344,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         id="homeIntro"
@@ -347,7 +376,11 @@ export default function Home() {
               src={homeIntro2}
               alt=""
             />
-            <img className="player md:w-[400px] lg:w-[800px] relative z-10" src={heroHomeIntro} alt="" />
+            <img
+              className="player md:w-[400px] lg:w-[800px] relative z-10"
+              src={heroHomeIntro}
+              alt=""
+            />
             {/* <Player
               src="https://lottie.host/65bd3ccc-313f-430a-b064-22ea4f6c0738/1zY3eMRnmJ.json"
               className="player md:w-[400px] lg:w-[800px] relative z-10"
