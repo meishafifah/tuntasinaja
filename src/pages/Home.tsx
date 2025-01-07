@@ -1,4 +1,5 @@
 import { Player } from "@lottiefiles/react-lottie-player";
+import Rive from "@rive-app/react-canvas";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,7 @@ import homeFile from "../assets/img/homeFile.png";
 import homeIntro1 from "../assets/img/homeIntro1.png";
 import homeIntro2 from "../assets/img/homeIntro2.png";
 import feature from "../assets/img/feature.svg";
-import faceReco from "../assets/img/faceReco.svg";
+import camAi from "../assets/img/camAi.svg";
 import botCall from "../assets/img/botCall.svg";
 import dataAnalytic from "../assets/img/dataAnalytic.svg";
 import iot from "../assets/img/iot.svg";
@@ -99,7 +100,6 @@ export default function Home() {
     event.preventDefault();
     console.log("File:", file);
     console.log("Compression Level:", compressionLevel);
-    // Add your form submission logic here
   };
 
   return (
@@ -148,6 +148,10 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              {/* <Rive
+                src="https://rive.app/community/files/15788-29758-rotate-animation"
+                // stateMachines="bumpy"
+              /> */}
             </div>
             <h1 className="text-black font-bold text-4xl relative z-10">
               <span className="text-[#0366FF]">Hemat Ruang</span>, Aman Data,
@@ -757,14 +761,16 @@ export default function Home() {
           </div>
           <div className="mt-11 text-[#212121] grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-6 ">
             <div className="w-full flex flex-col md:flex-row items-start bg-[#FBFBFB] p-5 rounded-3xl gap-4 hover:scale-105 duration-700">
-              <img className="w-12" src={faceReco} alt="" />
+              <img className="w-12" src={camAi} alt="" />
               <div>
                 <p className="text-base font-bold text-[#212121]">
-                  CCTV Dengan Face Recognition
+                  CCTV Dengan AI
                 </p>
                 <p className="mt-3 text-sm text-[#ABABAB]">
-                  Solusi CCTV kami yang dilengkapi dengan teknologi face
-                  recognition memungkinkan pemantauan lebih cerdas dan efisien.
+                  CCTV dengan AI canggih yang dilengkapi fitur Dwelling Time,
+                  Face Recognition, Motion Detection, dan People Counting,
+                  memungkinkan pengolahan data harian, mingguan, hingga bulanan
+                  untuk analisis keamanan dan operasional yang lebih efektif.
                 </p>
               </div>
             </div>
