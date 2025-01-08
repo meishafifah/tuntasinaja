@@ -86,6 +86,7 @@ export default function Home() {
   };
 
   // const [compressionLevel, setCompressionLevel] = useState("medium");
+  const [isLoadImage, setIsLoadImage] = useState(true);
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -362,7 +363,7 @@ export default function Home() {
                       <p className="mt-4 text-sm text-[#C9C9C9] text-center">
                         Click or drag and drop to upload a file <br />
                         <br /> We support file with format PNG, PDF, JPG, JPEG,
-                        WEBM, MP4, DAV, and MOV!
+                        sam, MP4, DAV, and MOV!
                       </p>
                     </>
                   ) : (
@@ -757,7 +758,14 @@ export default function Home() {
                 src={images[selectedImage]}
                 alt="Hasil Kompresi"
                 className="w-full h-[500px] md:h-[350px] xl:h-[450px] object-cover object-center rounded-3xl shadow-lg"
+                onLoad={() => setIsLoadImage(false)}
               />
+
+              {isLoadImage && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-200/50 rounded-3xl">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid"></div>
+                </div>
+              )}
 
               {/* Tombol */}
               <div className="absolute inset-0 flex items-end justify-center p-4">
@@ -781,9 +789,7 @@ export default function Home() {
                     }`}
                     onClick={() => setSelectedImage("low")}
                   >
-                    <p className="md:text-sm font-semibold mb-2">
-                      Low
-                    </p>
+                    <p className="md:text-sm font-semibold mb-2">Low</p>
                     <p>0,98 MB (-93,51%)</p>
                   </button>
                   <button
