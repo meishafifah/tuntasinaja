@@ -2,10 +2,10 @@
 // import Rive from "@rive-app/react-canvas";
 // import Autoplay from "@/components/Autoplay";
 // import logo from "../assets/img/homeLogo.png";
-// import { Button } from "@/components/ui/button";
-// import videoFile from "../assets/img/videoFile.svg";
-// import arrow from "../assets/img/arrow.svg";
 // import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
+// import videoFile from "../assets/img/videoFile.svg";
+import { Button } from "@/components/ui/button";
+import arrow from "../assets/img/arrow.svg";
 import axios from "axios";
 import heroHomeIntro from "../assets/img/heroHomeIntro.svg";
 import Footer from "@/components/Footer";
@@ -78,23 +78,47 @@ export default function Home() {
       "https://assets.promediateknologi.id/crop/112x0:864x454/750x500/webp/photo/2023/08/04/IMG_4978-686860802.jpg",
   };
 
+  type FileWithPreview = {
+    preview: string;
+    type: string;
+    name: string;
+  };
+
+  // const [compressionLevel, setCompressionLevel] = useState("medium");
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // const [compressionLevel, setCompressionLevel] = useState("medium");
+  const [compressionResult, setCompressionResult] = useState<{
+    fileName: string;
+    originalSize: string;
+    compressedSize: string;
+    percentageSaved: string;
+    downloadLink: string;
+    preview: string;
+  } | null>(null);
 
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
       const uploadedFile = acceptedFiles[0];
       setFile({
         file: uploadedFile,
-        name:uploadedFile.name,
+        name: uploadedFile.name,
         preview: URL.createObjectURL(uploadedFile),
       });
     }
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
+    onDrop: (acceptedFiles) => {
+      const maxSize = 3 * 1024 * 1024;
+
+      if (acceptedFiles[0].size > maxSize) {
+        setError("File size exceeds the 3MB limit");
+        return;
+      }
+      setError(null);
+      setCompressionResult(null);
+      onDrop(acceptedFiles);
+    },
     accept: {
       "*/*": ["*/*"],
     },
@@ -103,7 +127,7 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!file) {
       console.log("No file selected");
       return;
@@ -120,15 +144,58 @@ export default function Home() {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          responseType: "arraybuffer",
         }
       );
-      console.log("Responsne: ", response.data);
+
+      const fileType = file.file.type;
+      const blob = new Blob([response.data], { type: fileType });
+      const downloadLink = URL.createObjectURL(blob);
+      const compressedSize = Number(response.headers["content-length"]);
+
+      setCompressionResult({
+        fileName: file.name,
+        originalSize: (file.file.size / (1024 * 1024)).toFixed(2),
+        compressedSize: (compressedSize / (1024 * 1024)).toFixed(2),
+        percentageSaved: ((1 - compressedSize / file.file.size) * 100).toFixed(
+          2
+        ),
+        downloadLink,
+        preview: downloadLink,
+      });
+      console.log("Responsne: ", response);
     } catch (error: any) {
       setError(error.response?.data?.error);
       console.log(error.response?.data?.error);
     }
     console.log("File:", file);
     // console.log("Compression Level:", compressionLevel);
+  };
+
+  const renderPreview = (file: FileWithPreview) => {
+    if (file.type.startsWith("image/")) {
+      return (
+        <img
+          src={file.preview}
+          alt={file.name}
+          className="w-40 h-40 rounded-xl object-cover"
+        />
+      );
+    } else if (file.type.startsWith("video/")) {
+      return (
+        <video
+          src={file.preview}
+          className="w-40 h-40 rounded-xl object-cover"
+          controls
+        />
+      );
+    } else {
+      return (
+        <div className="w-40 h-40 rounded-xl flex text-center items-center justify-center text-gray-500">
+          No preview available
+        </div>
+      );
+    }
   };
 
   return (
@@ -228,11 +295,12 @@ export default function Home() {
                     </>
                   ) : (
                     <div className="flex flex-col items-center">
-                      <img
-                        src={file.preview}
-                        alt={file.name}
-                        className="w-40 h-40 rounded-xl object-cover"
-                      />
+                      {file &&
+                        renderPreview({
+                          preview: file.preview,
+                          type: file.file.type,
+                          name: file.name,
+                        })}
                       <p className="mt-4 text-sm text-[#202020]">{file.name}</p>
                     </div>
                   )}
@@ -291,61 +359,85 @@ export default function Home() {
                 >
                   Compress
                 </button>
-                {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+                {error && (
+                  <p className="text-red-500 text-center mt-4">{error}</p>
+                )}
               </div>
             </div>
           </form>
         </div>
       </section>
-
-      {/* <section
-        id="compressed"
-        className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
-      >
-        <div className="px-8 md:px-32 pt-16 lg:pt-20 w-fit lg:w-full min-[1700px]:w-[1700px]">
-          <div className="bg-[#F5F5F5] rounded-3xl p-5">
-            <div className="bg-white rounded-2xl p-5">
-              <h1 className="mb-6 font-bold text-xl lg:text-2xl">
-                Hasil Kompresi
-              </h1>
-              <div className="flex flex-col lg:flex-row lg:items-center gap-6 relative z-0">
-                <img
-                  className="hidden md:block pointer-events-none absolute top-56 right-0 lg:top-10 lg:right-20 min-[1440px]:right-1/3 min-[1700px]:right-1/2 z-0 animate-bounce"
-                  src={arrow}
-                  alt=""
-                />
-                <div className="bg-black rounded-3xl h-[175px] min-w-[200px] md:w-[345px]"></div>
-                <div className="text-[#212121]">
-                  <div className="flex flex-row items-center gap-x-2">
-                    <img className="w-9 h-9" src={videoFile} alt="" />
-                    <p className="text-sm">Nama FIle.Mov</p>
+      {compressionResult ? (
+        <section
+          id="compressed"
+          className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
+        >
+          <div className="px-8 md:px-32 pt-16 lg:pt-20 w-fit lg:w-full min-[1700px]:w-[1700px]">
+            <div className="bg-[#F5F5F5] rounded-3xl p-5">
+              <div className="bg-white rounded-2xl p-5">
+                <h1 className="mb-6 font-bold text-xl lg:text-2xl">
+                  Hasil Kompresi
+                </h1>
+                <div className="flex flex-col lg:flex-row lg:items-center gap-6 relative z-0">
+                  <img
+                    className="hidden md:block pointer-events-none absolute top-56 right-0 lg:top-10 lg:right-20 min-[1440px]:right-1/3 min-[1700px]:right-1/2 z-0 animate-bounce"
+                    src={arrow}
+                    alt=""
+                  />
+                  <div className="bg-transparent h-[175px] min-w-[200px] md:w-[345px] border-2 border-dashed border-[#9F9F9F] rounded-2xl flex justify-center items-center">
+                    {compressionResult.preview &&
+                      renderPreview({
+                        preview: compressionResult.preview,
+                        type: file
+                          ? file.file.type
+                          : "application/octet-stream",
+                        name: compressionResult.fileName,
+                      })}
                   </div>
-                  <div className="mt-4 flex flex-col md:flex-row gap-6">
-                    <div className="flex flex-col gap-y-1">
-                      <p className="text-sm text-[#C9C9C9]">Original File</p>
-                      <p className="text-sm">100 MB</p>
+                  <div className="text-[#212121]">
+                    <div className="flex flex-row items-center justify-center lg:justify-start gap-x-2">
+                      {/* <img className="w-9 h-9" src={videoFile} alt="" /> */}
+                      <p className="text-sm">{compressionResult.fileName}</p>
                     </div>
-                    <div className="hidden md:block min-h-[38px] w-[1px] bg-[#C9C9C9]"></div>
-                    <div className="flex flex-col gap-y-1">
-                      <p className="text-sm text-[#C9C9C9]">Hasil Kompresi</p>
-                      <div className="flex flex-row items-center gap-1">
-                        <p className="border border-[#0366FF] bg-[#E6F0FF] px-[10px] py-[2px] rounded font-bold text-[#0366FF] text-center text-sm">
-                          10 MB
+                    <div className="mt-4 flex flex-col md:flex-row gap-6">
+                      <div className="flex flex-col gap-y-1">
+                        <p className="text-sm text-[#C9C9C9]">Original File</p>
+                        <p className="text-sm">
+                          {compressionResult.originalSize} MB
                         </p>
-                        <p className="text-sm">(-90%)</p>
+                      </div>
+                      <div className="hidden md:block min-h-[38px] w-[1px] bg-[#C9C9C9]"></div>
+                      <div className="flex flex-col gap-y-1">
+                        <p className="text-sm text-[#C9C9C9]">Hasil Kompresi</p>
+                        <div className="flex flex-row items-center gap-1">
+                          <p className="border border-[#0366FF] bg-[#E6F0FF] px-[10px] py-[2px] rounded font-bold text-[#0366FF] text-center text-sm">
+                            {compressionResult.compressedSize} MB
+                          </p>
+                          <p className="text-sm">
+                            ({compressionResult.percentageSaved}%)
+                          </p>
+                        </div>
                       </div>
                     </div>
+                    <a
+                      href={compressionResult.downloadLink}
+                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="mt-6 rounded-[10px] bg-[#0366FF] relative z-10">
+                        Unduh Hasil Kompresi
+                      </Button>
+                    </a>
                   </div>
-                  <Button className="mt-6 rounded-[10px] bg-[#0366FF] relative z-10">
-                    Unduh Hasil Kompresi
-                  </Button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section> */}
-
+        </section>
+      ) : (
+        <></>
+      )}
       <section
         id="homeIntro"
         className="relative z-10 w-full max-w-[1700px] min-[1700px]:max-w-full flex justify-center overflow-hidden"
