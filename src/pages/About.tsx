@@ -153,7 +153,7 @@ export default function About() {
                 alt=""
               />
               <img
-                className="absolute z-0 top-20 -left-12 md:top-18 md:-left-12 lg:top-44 lg:left-44 pointer-events-none animate-bounce"
+                className="absolute z-0 top-28 -left-20 md:top-18 md:-left-12 lg:top-48 lg:left-44 pointer-events-none animate-bounce"
                 src={arrow1}
                 alt=""
               />

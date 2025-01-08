@@ -70,28 +70,28 @@ export default function Footer() {
               </h4>
               <div className="flex flex-col gap-y-2">
                 <Link to={"/"} className="text-sm md:text-base">
+                  PNG (.png)
+                </Link>
+                <Link to={"/"} className="text-sm md:text-base">
+                  PDF (.pdf)
+                </Link>
+                <Link to={"/"} className="text-sm md:text-base">
+                  JPG (.jpg)
+                </Link>
+                <Link to={"/"} className="text-sm md:text-base">
+                  JPEG (.jpeg)
+                </Link>
+                <Link to={"/"} className="text-sm md:text-base">
+                  WEBM (.webm)
+                </Link>
+                <Link to={"/"} className="text-sm md:text-base">
                   MP4 (.mp4)
                 </Link>
                 <Link to={"/"} className="text-sm md:text-base">
                   MOV (.mov)
                 </Link>
                 <Link to={"/"} className="text-sm md:text-base">
-                  AVI (.avi)
-                </Link>
-                <Link to={"/"} className="text-sm md:text-base">
-                  MKV (.mkv)
-                </Link>
-                <Link to={"/"} className="text-sm md:text-base">
-                  MP4 (.mp4)
-                </Link>
-                <Link to={"/"} className="text-sm md:text-base">
-                  MOV (.mov)
-                </Link>
-                <Link to={"/"} className="text-sm md:text-base">
-                  AVI (.avi)
-                </Link>
-                <Link to={"/"} className="text-sm md:text-base">
-                  MKV (.mkv)
+                  DAV (.dav)
                 </Link>
               </div>
             </div>

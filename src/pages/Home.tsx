@@ -43,6 +43,10 @@ import icon9 from "../assets/img/heroIcon/icon9.svg";
 import icon10 from "../assets/img/heroIcon/icon10.svg";
 import icon11 from "../assets/img/heroIcon/icon11.svg";
 import icon12 from "../assets/img/heroIcon/icon12.svg";
+import original from "../assets/img/fotoCompressed/original.jpg";
+import originalLow from "../assets/img/fotoCompressed/original_low.jpg";
+import originalMedium from "../assets/img/fotoCompressed/original_medium.jpg";
+import originalHigh from "../assets/img/fotoCompressed/original_high.jpg";
 import arrow1 from "../assets/img/arrow1.svg";
 import { useEffect, useState } from "react";
 import Chatbot from "@/components/Chatbot";
@@ -65,17 +69,14 @@ export default function Home() {
     });
   }, []);
 
-  type ImageKey = "original" | "medium" | "high" | "customizable";
+  type ImageKey = "original" | "low" | "medium" | "high";
   const [selectedImage, setSelectedImage] = useState<ImageKey>("original");
 
   const images: Record<ImageKey, string> = {
-    original:
-      "https://media.suara.com/pictures/653x366/2024/02/27/18939-dpr-ian-instagramcomdprian.jpg",
-    medium:
-      "https://images.bloombergtechnoz.com/data/2024/02/image-20240226130252.jpg",
-    high: "https://asset-2.tstatic.net/tribunnews/foto/bank/images/dpr-ian-i.jpg",
-    customizable:
-      "https://assets.promediateknologi.id/crop/112x0:864x454/750x500/webp/photo/2023/08/04/IMG_4978-686860802.jpg",
+    original: original,
+    low: originalLow,
+    medium: originalMedium,
+    high: originalHigh,
   };
 
   type FileWithPreview = {
@@ -84,7 +85,6 @@ export default function Home() {
     name: string;
   };
 
-  
   // const [compressionLevel, setCompressionLevel] = useState("medium");
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -97,12 +97,12 @@ export default function Home() {
     downloadLink: string;
     preview: string;
   } | null>(null);
-  
+
   useEffect(() => {
     if (file && file.preview) {
       return () => URL.revokeObjectURL(file.preview);
     }
-  }, [file]); 
+  }, [file]);
 
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -362,7 +362,7 @@ export default function Home() {
                       <p className="mt-4 text-sm text-[#C9C9C9] text-center">
                         Click or drag and drop to upload a file <br />
                         <br /> We support file with format PNG, PDF, JPG, JPEG,
-                        WEBM, MP4, DAV, and MOV TIFF!
+                        WEBM, MP4, DAV, and MOV!
                       </p>
                     </>
                   ) : (
@@ -771,7 +771,20 @@ export default function Home() {
                     onClick={() => setSelectedImage("original")}
                   >
                     <p className="md:text-sm font-semibold mb-2">Original</p>
-                    <p>1GB</p>
+                    <p>14,8 MB</p>
+                  </button>
+                  <button
+                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
+                      selectedImage === "low"
+                        ? "bg-[#0366FF] text-white border-none"
+                        : "bg-transparent text-white"
+                    }`}
+                    onClick={() => setSelectedImage("low")}
+                  >
+                    <p className="md:text-sm font-semibold mb-2">
+                      Low
+                    </p>
+                    <p>0,98 MB (-93,51%)</p>
                   </button>
                   <button
                     className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
@@ -782,7 +795,7 @@ export default function Home() {
                     onClick={() => setSelectedImage("medium")}
                   >
                     <p className="md:text-sm font-semibold mb-2">Medium</p>
-                    <p>500MB (-50%)</p>
+                    <p>1,6 MB (-89,19%)</p>
                   </button>
                   <button
                     className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
@@ -793,20 +806,7 @@ export default function Home() {
                     onClick={() => setSelectedImage("high")}
                   >
                     <p className="md:text-sm font-semibold mb-2">High</p>
-                    <p>100MB (-70%)</p>
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
-                      selectedImage === "customizable"
-                        ? "bg-[#0366FF] text-white border-none"
-                        : "bg-transparent text-white"
-                    }`}
-                    onClick={() => setSelectedImage("customizable")}
-                  >
-                    <p className="md:text-sm font-semibold mb-2">
-                      Can be customized
-                    </p>
-                    <p>9MB (-95%)</p>
+                    <p>3,1 MB (-79,05%)</p>
                   </button>
                 </div>
               </div>
