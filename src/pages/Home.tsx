@@ -10,7 +10,7 @@ import axios from "axios";
 import heroHomeIntro from "../assets/img/heroHomeIntro.svg";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Upload } from "lucide-react";
+import { Loader2Icon, Upload } from "lucide-react";
 import hematBeban from "../assets/img/hematBeban.svg";
 import hematWaktu from "../assets/img/hematWaktu.svg";
 import hematTempat from "../assets/img/hematTempat.svg";
@@ -84,8 +84,10 @@ export default function Home() {
     name: string;
   };
 
+  
   // const [compressionLevel, setCompressionLevel] = useState("medium");
   const [file, setFile] = useState<UploadedFile | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [compressionResult, setCompressionResult] = useState<{
     fileName: string;
@@ -95,6 +97,12 @@ export default function Home() {
     downloadLink: string;
     preview: string;
   } | null>(null);
+  
+  useEffect(() => {
+    if (file && file.preview) {
+      return () => URL.revokeObjectURL(file.preview);
+    }
+  }, [file]); 
 
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -109,18 +117,75 @@ export default function Home() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: (acceptedFiles) => {
+      setError(null);
+      setCompressionResult(null);
+
+      if (!acceptedFiles || acceptedFiles.length === 0) {
+        setFile(null);
+        setCompressionResult(null);
+        setError("Invalid file type. Please upload a valid file.");
+        return;
+      }
+
+      const file = acceptedFiles[0];
+
       const maxSize = 3 * 1024 * 1024;
 
-      if (acceptedFiles[0].size > maxSize) {
+      if (file.size > maxSize) {
+        setFile(null);
         setError("File size exceeds the 3MB limit");
         return;
       }
-      setError(null);
-      setCompressionResult(null);
+
+      const acceptedTypes = [
+        "image/png",
+        "image/jpeg",
+        "application/pdf",
+        "video/webm",
+        "video/mp4",
+        "video/quicktime",
+        "video/x-dav",
+      ];
+
+      const fileType = file.type;
+
+      if (!acceptedTypes.includes(fileType)) {
+        setFile(null);
+        setError("Invalid file type. Please upload a valid file.");
+        return;
+      }
+
+      const fileName = file.name;
+      const fileExtension = fileName
+        .slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2)
+        .toLowerCase();
+
+      const allowedExtensions = [
+        "png",
+        "jpeg",
+        "jpg",
+        "pdf",
+        "webm",
+        "mp4",
+        "mov",
+        "dav",
+      ];
+
+      if (!allowedExtensions.includes(fileExtension)) {
+        setFile(null);
+        setError("Invalid file extension. Please upload a valid file.");
+        return;
+      }
       onDrop(acceptedFiles);
     },
     accept: {
-      "*/*": ["*/*"],
+      "image/png": [".png"],
+      "image/jpeg": [".jpeg", ".jpg"],
+      "application/pdf": [".pdf"],
+      "video/webm": [".webm"],
+      "video/mp4": [".mp4"],
+      "video/quicktime": [".mov"],
+      "video/x-dav": [".dav"],
     },
     multiple: false,
   });
@@ -135,6 +200,8 @@ export default function Home() {
 
     const formData = new FormData();
     formData.append("file", file.file);
+
+    setIsLoading(true);
 
     try {
       const response = await axios.post(
@@ -167,6 +234,8 @@ export default function Home() {
     } catch (error: any) {
       setError(error.response?.data?.error);
       console.log(error.response?.data?.error);
+    } finally {
+      setIsLoading(false);
     }
     console.log("File:", file);
     // console.log("Compression Level:", compressionLevel);
@@ -281,7 +350,10 @@ export default function Home() {
                       : "border-dashed border-[#9F9F9F]"
                   }`}
                 >
-                  <input {...getInputProps()} />
+                  <input
+                    {...getInputProps()}
+                    accept=".png,.jpeg,.jpg,.pdf,.webm,.mp4,.mov,.dav"
+                  />
                   {!file ? (
                     <>
                       <button className="w-fit text-sm bg-[#000A1A] flex items-center gap-2 px-4 py-2 text-white rounded-[10px]">
@@ -289,8 +361,8 @@ export default function Home() {
                       </button>
                       <p className="mt-4 text-sm text-[#C9C9C9] text-center">
                         Click or drag and drop to upload a file <br />
-                        <br /> We support image file types like JPEG, PNG, GIF,
-                        and TIFF!
+                        <br /> We support file with format PNG, PDF, JPG, JPEG,
+                        WEBM, MP4, DAV, and MOV TIFF!
                       </p>
                     </>
                   ) : (
@@ -353,12 +425,22 @@ export default function Home() {
                     </div>
                   </RadioGroup>
                 </div> */}
-                <button
-                  type="submit"
-                  className="bg-[#0366FF] rounded-[10px] w-full py-2 text-white mt-6"
-                >
-                  Compress
-                </button>
+                {isLoading ? (
+                  <button
+                    type="submit"
+                    className="bg-[#0366FF] rounded-[10px] w-full py-2 text-white mt-6 text-center flex flex-row justify-center gap-2"
+                  >
+                    <Loader2Icon className="animate-spin" />
+                    <p>Processing...</p>
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="bg-[#0366FF] rounded-[10px] w-full py-2 text-white mt-6"
+                  >
+                    Compress
+                  </button>
+                )}
                 {error && (
                   <p className="text-red-500 text-center mt-4">{error}</p>
                 )}
@@ -425,7 +507,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button className="mt-6 rounded-[10px] bg-[#0366FF] relative z-10">
+                      <Button className="mt-6 rounded-[10px] bg-[#0366FF] relative z-10 w-full lg:w-fit">
                         Unduh Hasil Kompresi
                       </Button>
                     </a>
