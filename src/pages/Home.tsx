@@ -771,9 +771,9 @@ export default function Home() {
               <a
                 href={images[selectedImage]}
                 download={`${selectedImage}.jpg`}
-                className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 z-10"
+                className="absolute top-4 right-4 bg-[#F5F5F5]/50 p-2 rounded-full shadow-lg hover:bg-[#0366FF] z-10"
               >
-                <Download className="h-6 w-6 text-blue-500" />
+                <Download className="h-6 w-6 text-white" />
               </a>
 
               <div className="absolute inset-0 flex items-end justify-center p-4">
