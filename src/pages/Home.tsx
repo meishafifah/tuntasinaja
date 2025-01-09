@@ -10,7 +10,7 @@ import axios from "axios";
 import heroHomeIntro from "../assets/img/heroHomeIntro.svg";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Loader2Icon, Upload } from "lucide-react";
+import { Download, Loader2Icon, Upload } from "lucide-react";
 import hematBeban from "../assets/img/hematBeban.svg";
 import hematWaktu from "../assets/img/hematWaktu.svg";
 import hematTempat from "../assets/img/hematTempat.svg";
@@ -757,6 +757,7 @@ export default function Home() {
               <img
                 src={images[selectedImage]}
                 alt="Hasil Kompresi"
+                crossOrigin="anonymous"
                 className="w-full h-[500px] md:h-[350px] xl:h-[450px] object-cover object-center rounded-3xl shadow-lg"
                 onLoad={() => setIsLoadImage(false)}
               />
@@ -767,53 +768,40 @@ export default function Home() {
                 </div>
               )}
 
-              {/* Tombol */}
+              <a
+                href={images[selectedImage]}
+                download={`${selectedImage}.jpg`}
+                className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 z-10"
+              >
+                <Download className="h-6 w-6 text-blue-500" />
+              </a>
+
               <div className="absolute inset-0 flex items-end justify-center p-4">
                 <div className="bg-[#F5F5F5]/50 backdrop-blur-sm p-4 rounded-[20px] grid grid-cols-2 gap-1 md:flex md:space-x-4 md:gap-0">
-                  <button
-                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
-                      selectedImage === "original"
-                        ? "bg-[#0366FF] text-white border-none"
-                        : "bg-transparent text-white"
-                    }`}
-                    onClick={() => setSelectedImage("original")}
-                  >
-                    <p className="md:text-sm font-semibold mb-2">Original</p>
-                    <p>14,8 MB</p>
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
-                      selectedImage === "low"
-                        ? "bg-[#0366FF] text-white border-none"
-                        : "bg-transparent text-white"
-                    }`}
-                    onClick={() => setSelectedImage("low")}
-                  >
-                    <p className="md:text-sm font-semibold mb-2">Low</p>
-                    <p>0,98 MB (-93,51%)</p>
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
-                      selectedImage === "medium"
-                        ? "bg-[#0366FF] text-white border-none"
-                        : "bg-transparent text-white"
-                    }`}
-                    onClick={() => setSelectedImage("medium")}
-                  >
-                    <p className="md:text-sm font-semibold mb-2">Medium</p>
-                    <p>1,6 MB (-89,19%)</p>
-                  </button>
-                  <button
-                    className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
-                      selectedImage === "high"
-                        ? "bg-[#0366FF] text-white border-none"
-                        : "bg-transparent text-white"
-                    }`}
-                    onClick={() => setSelectedImage("high")}
-                  >
-                    <p className="md:text-sm font-semibold mb-2">High</p>
-                    <p>3,1 MB (-79,05%)</p>
-                  </button>
+                  {Object.keys(images).map((key) => (
+                    <button
+                      key={key}
+                      className={`px-4 py-2 rounded-xl hover:scale-110 duration-700 border border-white text-[10px] ${
+                        selectedImage === key
+                          ? "bg-[#0366FF] text-white border-none"
+                          : "bg-transparent text-white"
+                      }`}
+                      onClick={() => setSelectedImage(key as ImageKey)}
+                    >
+                      <p className="md:text-sm font-semibold mb-2">
+                        {key.charAt(0).toUpperCase() + key.slice(1)}
+                      </p>
+                      <p>
+                        {key === "original"
+                          ? "14,8 MB"
+                          : key === "low"
+                          ? "0,98 MB (-93,51%)"
+                          : key === "medium"
+                          ? "1,6 MB (-89,19%)"
+                          : "3,1 MB (-79,05%)"}
+                      </p>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
