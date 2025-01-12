@@ -364,8 +364,7 @@ export default function Home() {
                       </button>
                       <p className="mt-4 text-sm text-[#C9C9C9] text-center">
                         Click or drag and drop to upload a file <br />
-                        <br /> We support file with format PNG, PDF, JPG, JPEG,
-                        sam, MP4, DAV, and MOV!
+                        <br /> We support file with format PNG, PDF, JPG, JPEG, MP4, DAV, and MOV!
                         <br /> Maximum file size: 3MB
                       </p>
                     </>
@@ -531,16 +530,16 @@ export default function Home() {
         <div className="px-8 md:px-32 py-16 lg:py-20 min-[1700px]:w-[1700px]">
           <div className="text-[#212121] text-center relative z-10">
             <h1 className="text-center font-bold text-xl lg:text-2xl">
-              Semua Beres Di Tuntasinaja
+              Semua Beres Di TuntasinAja
             </h1>
             <p className="mt-4 text-sm lg:text-base relative z-1">
-              Tuntasinaja hadir sebagai mitra andal Anda dalam menyelesaikan
+              TuntasinAja hadir sebagai mitra andal Anda dalam menyelesaikan
               berbagai masalah teknologi. Dari kompresi data yang efisien hingga
               Face Recognition AI yang canggih kami menyediakan solusi
               terintegrasi yang membuat pekerjaan Anda lebih mudah, lebih cepat,
               dan lebih aman. Dengan dukungan teknologi modern, kami pastikan
               semua kebutuhan Anda terselesaikan dengan sempurna. Karena di
-              Tuntasinaja, semuanya beres!
+              TuntasinAja, semuanya beres!
             </p>
           </div>
           <div className="mt-10 lg:mt-20 flex justify-center relative">
@@ -607,7 +606,7 @@ export default function Home() {
                 Hemat Beban Upto 95%
               </h2>
               <p className="text-sm">
-                Teknologi kompresi canggih dari Tuntasinaja memungkinkan Anda
+                Teknologi kompresi canggih dari TuntasinAja memungkinkan Anda
                 mengurangi ukuran data hingga 95% dengan kualitas yang terjaga.
               </p>
             </div>
@@ -617,7 +616,7 @@ export default function Home() {
                 Hemat Waktu Transfer
               </h2>
               <p className="text-sm">
-                Dengan teknologi kompresi unggulan dari Tuntasinaja, proses
+                Dengan teknologi kompresi unggulan dari TuntasinAja, proses
                 transfer data menjadi jauh lebih cepat dan efisien.
               </p>
             </div>
@@ -638,7 +637,7 @@ export default function Home() {
                 Kualitas Tetap Terjaga
               </h2>
               <p className="text-sm">
-                Teknologi kompresi Tuntasinaja dirancang untuk mengurangi ukuran
+                Teknologi kompresi TuntasinAja dirancang untuk mengurangi ukuran
                 file secara signifikan dengan menjaga detail dan kualitas dari
                 video tersebut.
               </p>
@@ -685,7 +684,7 @@ export default function Home() {
                     Upload video
                   </p>
                   <p className="text-[#ABABAB] text-sm">
-                    Pilih file hingga 500 MB secara gratis dari perangkat Anda:
+                    Pilih file hingga 3 MB secara gratis dari perangkat Anda:
                     Android, iPhone, Mac, Windows.
                   </p>
                 </div>
@@ -960,7 +959,7 @@ export default function Home() {
               Our Future Work
             </h1>
             <p className="mt-4 text-sm relative z-1">
-              Di Tuntasinaja, kami berkomitmen untuk terus berkembang dan
+              Di TuntasinAja, kami berkomitmen untuk terus berkembang dan
               berinovasi
             </p>
           </div>

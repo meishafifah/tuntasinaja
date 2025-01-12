@@ -70,7 +70,7 @@ export default function About() {
             <div className="grid lg:grid-cols-2 justify-items-center items-center gap-10 relative z-10">
               <div>
                 <h1 className="text-white font-bold text-2xl lg:text-4xl">
-                  Tentang Tuntasinaaja
+                  Tentang TuntasinAja
                 </h1>
                 <p className="text-white mt-4 lg:text-base">
                   Perusahaan teknologi inovatif yang berfokus pada solusi
@@ -96,7 +96,7 @@ export default function About() {
       >
         <div className="px-8 md:px-32 pt-20 xl:pt-28 min-[1700px]:w-[1700px]">
           <h2 className="mb-6 font-bold text-xl lg:text-2xl text-[#212121] text-center">
-            Tuntasinaja Dalam Angka
+            TuntasinAja Dalam Angka
           </h2>
           <div className="rounded-[20px] text-[#212121] bg-[#FBFBFB] p-6 grid md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-10 md:gap-6">
             <div className="flex flex-col items-center self-start text-center hover:scale-105 duration-700">
@@ -234,7 +234,7 @@ export default function About() {
                 dengan laporan otomatis.
                 <br />
                 <br />
-                Dua tantangan ini melahirkan Tuntasinaja, teknologi efisien
+                Dua tantangan ini melahirkan TuntasinAja, teknologi efisien
                 berbasis kompresi data dan AI
               </p>
             </div>
@@ -254,7 +254,7 @@ export default function About() {
         <div className="px-8 md:px-32 py-16 xl:py-28 min-[1700px]:w-[1700px] relative flex justify-center">
           <div className="text-[#212121] text-center relative flex flex-col items-center z-10 w-full md:w-3/4 lg:w-2/3">
             <h1 className="text-center font-bold text-xl lg:text-2xl">
-              Tim Hebat di Balik Solusi Tuntasinaja
+              Tim Hebat di Balik Solusi TuntasinAja
             </h1>
             <p className="mt-4 text-sm lg:text-base relative z-1">
               Tim kami terdiri dari para profesional berpengalaman yang
@@ -313,7 +313,7 @@ export default function About() {
                 to={"/contact"}
                 className="absolute bottom-3 xl:bottom-6 left-[65%] transform -translate-x-[65%] w-[85%] flex justify-center"
               >
-                <Button className="bg-[#0366FF] hover:bg-[#0366FF] text-xs min-[425px]:text-sm text-white rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 lg:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
+                <Button className="bg-[#0366FF] hover:bg-[#0366FF] text-xs min-[425px]:text-sm text-white rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 xl:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
                   Coba Sekarang
                 </Button>
               </Link>
@@ -328,7 +328,7 @@ export default function About() {
                 to={"/contact"}
                 className="absolute bottom-3 xl:bottom-6 left-[65%] transform -translate-x-[65%] w-[85%] flex justify-center"
               >
-                <Button className="bg-white hover:bg-white text-xs min-[425px]:text-sm text-black rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 lg:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
+                <Button className="bg-white hover:bg-white text-xs min-[425px]:text-sm text-[#212121] rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 xl:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
                   Coba Sekarang
                 </Button>
               </Link>
@@ -343,7 +343,7 @@ export default function About() {
                 to={"/contact"}
                 className="absolute bottom-3 xl:bottom-6 left-[65%] transform -translate-x-[65%] w-[85%] flex justify-center"
               >
-                <Button className="bg-white hover:bg-white text-xs min-[425px]:text-sm text-black rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 lg:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
+                <Button className="bg-white hover:bg-white text-xs min-[425px]:text-sm text-[#212121] rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 xl:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
                   Coba Sekarang
                 </Button>
               </Link>
