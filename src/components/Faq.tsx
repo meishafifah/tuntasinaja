@@ -38,31 +38,31 @@ export default function Faq() {
             {[
               {
                 value: "item-1",
-                label: "Apa itu Tuntasinaja?",
-                desc: "Perusahaan teknologi inovatif yang berfokus pada solusi kompresi data untuk kebutuhan bisnis modern. Kami berdedikasi untuk membantu perusahaan di berbagai industri dalam mengoptimalkan penggunaan data dengan cara yang lebih efisien, cepat, dan hemat biaya.",
+                label: "Seberapa aman data kami setelah dikompresi? Apakah ada risiko kehilangan atau kebocoran data?",
+                desc: "Keamanan data adalah prioritas utama kami. Sistem kompresi kami menggunakan enkripsi end-to-end dan dapat diintegrasikan dengan server on-premise untuk kontrol penuh atas data Anda. Kami juga menyediakan opsi backup otomatis untuk memastikan tidak ada data yang hilang selama proses kompresi.",
               },
               {
                 value: "item-2",
                 label:
-                  "Bagaimana cara menggunakan layanan kompresi data di Tuntasinaja?",
-                desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad culpa fuga illo! Maxime voluptas, quam enim explicabo incidunt facilis voluptates, neque ipsa fugit, id ex debitis! Aspernatur, hic possimus?",
+                  "Apakah kualitas video CCTV akan menurun setelah dikompresi? Bagaimana dengan detail penting seperti wajah atau plat nomor?",
+                desc: "Teknologi kompresi kami dirancang khusus untuk mempertahankan detail penting dalam rekaman CCTV. Anda dapat mengkustomisasi tingkat kompresi sesuai kebutuhan, dengan tetap mempertahankan kualitas pada area-area penting seperti wajah, plat nomor, atau area spesifik lainnya. Bahkan dengan rasio kompresi hingga 95%, detail crucial tetap terjaga.",
               },
               {
                 value: "item-3",
                 label:
-                  "Apakah ada biaya untuk menggunakan layanan Tuntasinaja?",
-                desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad culpa fuga illo! Maxime voluptas, quam enim explicabo incidunt facilis voluptates, neque ipsa fugit, id ex debitis! Aspernatur, hic possimus?",
+                  "Berapa lama waktu yang dibutuhkan untuk mengimplementasikan sistem ini di perusahaan kami?",
+                desc: "Waktu implementasi bervariasi tergantung skala dan kebutuhan spesifik perusahaan Anda. Umumnya, untuk sistem dasar dapat selesai dalam 1-2 minggu, termasuk instalasi, konfigurasi, dan training tim Anda. Kami juga menyediakan dukungan teknis 24/7 selama masa transisi.",
               },
               {
                 value: "item-4",
                 label:
-                  "Apa saja jenis file yang bisa dikompresi di Tuntasinaja?",
-                desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad culpa fuga illo! Maxime voluptas, quam enim explicabo incidunt facilis voluptates, neque ipsa fugit, id ex debitis! Aspernatur, hic possimus?",
+                  "Apakah sistem ini kompatibel dengan infrastruktur IT yang sudah ada di perusahaan kami?",
+                desc: "Ya, solusi kami dirancang untuk mudah diintegrasikan dengan berbagai sistem yang ada. Kami dapat menyesuaikan dengan infrastruktur Anda saat ini, baik itu sistem CCTV, storage, atau platform manajemen data yang sudah berjalan. Sebelum implementasi, tim kami akan melakukan assessment menyeluruh untuk memastikan kompatibilitas dan transisi yang mulus.",
               },
               {
                 value: "item-5",
-                label: "Apakah Tuntasinaja menyediakan layanan konsultasi?",
-                desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad culpa fuga illo! Maxime voluptas, quam enim explicabo incidunt facilis voluptates, neque ipsa fugit, id ex debitis! Aspernatur, hic possimus?",
+                label: "Bagaimana dengan ROI (Return on Investment) dari implementasi sistem ini?",
+                desc: "Dengan penghematan ruang penyimpanan hingga 95%, Anda dapat signifikan mengurangi biaya hardware storage dan maintenance. Klien kami rata-rata mengalami penghematan 40-60% dari total biaya penyimpanan data dalam jangka panjang. Kami dapat membantu menghitung estimasi ROI spesifik untuk perusahaan Anda berdasarkan skala dan kebutuhan.",
               },
             ].map(({ value, label, desc }) => (
               <AccordionItem

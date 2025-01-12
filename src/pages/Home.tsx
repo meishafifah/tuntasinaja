@@ -325,8 +325,10 @@ export default function Home() {
               <span className="text-[#0366FF]">AI Pintar</span>
             </h1>
             <p className="mt-4 text-base text-[#202020] relative z-10">
-              Hemat ruang penyimpanan hingga 70% tanpa mengorbankan kualitas,
-              lindungi data Anda dengan jaringan private yang aman,
+              Hemat ruang penyimpanan hingga 95% dengan kualitas terjaga dan
+              bisa dikustom sesuai kebutuhan, serta tingkatkan keamanan data
+              melalui instalasi server on premise untuk kontrol penuh atas
+              jaringan dan sistem.
             </p>
           </div>
           <img
@@ -364,6 +366,7 @@ export default function Home() {
                         Click or drag and drop to upload a file <br />
                         <br /> We support file with format PNG, PDF, JPG, JPEG,
                         sam, MP4, DAV, and MOV!
+                        <br /> Maximum file size: 3MB
                       </p>
                     </>
                   ) : (
@@ -605,7 +608,7 @@ export default function Home() {
               </h2>
               <p className="text-sm">
                 Teknologi kompresi canggih dari Tuntasinaja memungkinkan Anda
-                mengurangi ukuran data hingga 95% tanpa mengorbankan kualitas.
+                mengurangi ukuran data hingga 95% dengan kualitas yang terjaga.
               </p>
             </div>
             <div className="flex flex-col items-start bg-[#FBFBFB] p-5 rounded-3xl hover:scale-110 duration-700">
@@ -636,7 +639,8 @@ export default function Home() {
               </h2>
               <p className="text-sm">
                 Teknologi kompresi Tuntasinaja dirancang untuk mengurangi ukuran
-                file secara signifikan tanpa mengorbankan detail video
+                file secara signifikan dengan menjaga detail dan kualitas dari
+                video tersebut.
               </p>
             </div>
           </div>
@@ -868,11 +872,10 @@ export default function Home() {
               </h1>
               <p className="mt-4 text-sm lg:text-base relative z-1">
                 Kompresi gambar kini lebih mudah dan efisien. Teknologi kami
-                memungkinkan Anda untuk mengurangi ukuran file gambar hingga 90%
-                tanpa mengorbankan kualitas visual. Solusi ini tidak hanya
-                menghemat ruang penyimpanan, tetapi juga mempercepat proses
-                pengiriman file, baik untuk kebutuhan pribadi maupun
-                profesional.
+                memungkinkan Anda untuk mengurangi ukuran file gambar hingga 95%
+                dan menjaga kualitas visual. Solusi ini tidak hanya menghemat
+                ruang penyimpanan, tetapi juga mempercepat proses pengiriman
+                file, baik untuk kebutuhan pribadi maupun profesional.
               </p>
             </div>
           </div>
@@ -936,12 +939,11 @@ export default function Home() {
               </h1>
               <p className="mt-4 text-sm lg:text-base relative z-1">
                 Teknologi kompresi file kami dirancang untuk mengurangi ukuran
-                file secara signifikan tanpa mengurangi kualitas atau kehilangan
-                data. Solusi ini mempermudah penyimpanan, transfer, dan
-                pengelolaan file dengan lebih efisien. Baik untuk dokumen,
-                gambar, video, atau jenis file lainnya, proses kompresi
-                berlangsung cepat dan aman, didukung antarmuka yang ramah
-                pengguna.
+                file secara signifikan dengan menjaga kualitas data. Solusi ini
+                mempermudah penyimpanan, transfer, dan pengelolaan file dengan
+                lebih efisien. Baik untuk dokumen, gambar, video, atau jenis
+                file lainnya, proses kompresi berlangsung cepat dan aman,
+                didukung antarmuka yang ramah pengguna.
               </p>
             </div>
           </div>

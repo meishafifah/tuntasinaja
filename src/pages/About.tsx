@@ -99,7 +99,7 @@ export default function About() {
             Tuntasinaja Dalam Angka
           </h2>
           <div className="rounded-[20px] text-[#212121] bg-[#FBFBFB] p-6 grid md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-10 md:gap-6">
-            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
+            <div className="flex flex-col items-center self-start text-center hover:scale-105 duration-700">
               <img className="w-12" src={tahun} alt="" />
               <h2 className="mt-4 font-semibold text-xl lg:text-2xl">
                 +3 Tahun
@@ -108,7 +108,7 @@ export default function About() {
                 Pengalaman mengembangkan teknologi
               </p>
             </div>
-            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
+            <div className="flex flex-col items-center self-start text-center hover:scale-105 duration-700">
               <img className="w-12" src={fileKompress} alt="" />
               <h2 className="mt-4 font-semibold text-xl lg:text-2xl">
                 +10 Ribu
@@ -117,19 +117,15 @@ export default function About() {
                 File video yang teah berhasil di kompresi
               </p>
             </div>
-            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
+            <div className="flex flex-col items-center self-start text-center hover:scale-105 duration-700">
               <img className="w-12" src={client} alt="" />
-              <h2 className="mt-4 font-semibold text-xl lg:text-2xl">+300</h2>
-              <p className="mt-2 text-sm lg:text-base">
-                Klien dari berbagai perusahaan puas bersama kami
-              </p>
+              <h2 className="mt-4 font-semibold text-xl lg:text-2xl">+8</h2>
+              <p className="mt-2 text-sm lg:text-base">Supported extension</p>
             </div>
-            <div className="flex flex-col items-center text-center hover:scale-105 duration-700">
+            <div className="flex flex-col items-center self-start text-center hover:scale-105 duration-700">
               <img className="w-12" src={ukuranFile} alt="" />
-              <h2 className="mt-4 font-semibold text-xl lg:text-2xl">+500MB</h2>
-              <p className="mt-2 text-sm lg:text-base">
-                Kompresi gratis untuk file hingga 500MB tanpa batasan
-              </p>
+              <h2 className="mt-4 font-semibold text-xl lg:text-2xl">24/7</h2>
+              <p className="mt-2 text-sm lg:text-base">Layanan teknis</p>
             </div>
           </div>
         </div>
@@ -307,31 +303,49 @@ export default function About() {
             Teknologi Kami
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-6">
-            <div className="relative z-10">
-              <Link to={"/contact"}>
-                <img
-                  className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
-                  src={kompresiCctv}
-                  alt=""
-                />
+            <div className="relative z-10 mx-auto">
+              <img
+                className="flex justify-center items-center w-[350px] xl:w-[500px]"
+                src={kompresiCctv}
+                alt=""
+              />
+              <Link
+                to={"/contact"}
+                className="absolute bottom-3 xl:bottom-6 left-[65%] transform -translate-x-[65%] w-[85%] flex justify-center"
+              >
+                <Button className="bg-[#0366FF] hover:bg-[#0366FF] text-xs min-[425px]:text-sm text-white rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 lg:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
+                  Coba Sekarang
+                </Button>
               </Link>
             </div>
-            <div className="relative z-10">
-              <Link to={"/contact"}>
-                <img
-                  className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
-                  src={kompresiFile}
-                  alt=""
-                />
+            <div className="relative z-10 mx-auto">
+              <img
+                className="flex justify-center items-center w-[350px] xl:w-[500px]"
+                src={kompresiFile}
+                alt=""
+              />
+              <Link
+                to={"/contact"}
+                className="absolute bottom-3 xl:bottom-6 left-[65%] transform -translate-x-[65%] w-[85%] flex justify-center"
+              >
+                <Button className="bg-white hover:bg-white text-xs min-[425px]:text-sm text-black rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 lg:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
+                  Coba Sekarang
+                </Button>
               </Link>
             </div>
-            <div className="relative z-10">
-              <Link to={"/contact"}>
-                <img
-                  className="w-[350px] xl:w-[500px] hover:scale-105 duration-700"
-                  src={kompresiImage}
-                  alt=""
-                />
+            <div className="relative z-10 mx-auto">
+              <img
+                className="flex justify-center items-center w-[350px] xl:w-[500px]"
+                src={kompresiImage}
+                alt=""
+              />
+              <Link
+                to={"/contact"}
+                className="absolute bottom-3 xl:bottom-6 left-[65%] transform -translate-x-[65%] w-[85%] flex justify-center"
+              >
+                <Button className="bg-white hover:bg-white text-xs min-[425px]:text-sm text-black rounded-[10px] hover:scale-110 duration-700 h-6 min-[425px]:h-8 lg:h-10 w-full max-w-[350px] xl:max-w-[450px] p-0">
+                  Coba Sekarang
+                </Button>
               </Link>
             </div>
           </div>
